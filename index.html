@@ -69,7 +69,9 @@ a {
   letter-spacing: 0.5px;
 }
 
-.products {
+.products,
+.search-results,
+.wishlist-results {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
@@ -77,6 +79,7 @@ a {
 
 .product {
   cursor: pointer;
+  position: relative;
 }
 
 .product-image {
@@ -84,6 +87,7 @@ a {
   height: 650px;
   overflow: hidden;
   background: #eee;
+  position: relative;
 }
 
 .product-image img {
@@ -102,12 +106,34 @@ a {
   font-size: 11px;
 }
 
-/* PRODUCT PAGE */
+/* HEART */
+
+.heart-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: white;
+  color: #111;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.heart-btn.active {
+  color: #111;
+}
+
+/* PAGES */
 
 .product-page,
 .about-page,
 .checkout-page,
-.search-page {
+.search-page,
+.wishlist-page {
   display: none;
   padding: 35px 28px;
 }
@@ -118,6 +144,8 @@ a {
   margin-bottom: 25px;
   display: inline-block;
 }
+
+/* PRODUCT PAGE */
 
 .product-detail {
   display: grid;
@@ -178,6 +206,17 @@ a {
 .detail-price {
   font-size: 13px;
   margin-bottom: 35px;
+}
+
+.product-wishlist-btn {
+  margin-bottom: 30px;
+  background: white;
+  border: 1px solid #111;
+  padding: 13px 18px;
+  font-size: 11px;
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: 0.5px;
 }
 
 .label {
@@ -379,12 +418,6 @@ a {
   margin-bottom: 30px;
 }
 
-.search-results {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
 /* ABOUT */
 
 .about-content {
@@ -464,7 +497,8 @@ a {
   }
 
   .products,
-  .search-results {
+  .search-results,
+  .wishlist-results {
     grid-template-columns: 1fr;
   }
 
@@ -484,7 +518,8 @@ a {
   .product-page,
   .about-page,
   .checkout-page,
-  .search-page {
+  .search-page,
+  .wishlist-page {
     padding: 20px 15px;
   }
 
@@ -498,7 +533,6 @@ a {
   }
 
 }
-
 </style>
 </head>
 
@@ -515,10 +549,12 @@ a {
 
   <div class="nav-right">
     <a onclick="showSearch()">SEARCH</a>
+    <a onclick="showWishlist()">WISHLIST (<span id="wishlist-count">0</span>)</a>
     <a onclick="openBag()">BAG (<span id="bag-count">0</span>)</a>
   </div>
 
 </header>
+
 
 <!-- SHOP -->
 
@@ -531,39 +567,12 @@ a {
   <span>VIEW ALL</span>
 </div>
 
-<div class="products" id="products">
-
-  <article class="product" onclick="openProduct(0)">
-    <div class="product-image">
-      <img src="judge-001-front.jpeg">
-    </div>
-    <div class="product-info">
-      <span>₹2,499 &nbsp; JUDGE / 001</span>
-    </div>
-  </article>
-
-  <article class="product" onclick="openProduct(1)">
-    <div class="product-image">
-      <img src="judge-002-front.jpeg">
-    </div>
-    <div class="product-info">
-      <span>₹2,799 &nbsp; JUDGE / 002</span>
-    </div>
-  </article>
-
-  <article class="product" onclick="openProduct(2)">
-    <div class="product-image">
-      <img src="judge-003-front.jpeg">
-    </div>
-    <div class="product-info">
-      <span>₹2,799 &nbsp; JUDGE / 003</span>
-    </div>
-  </article>
-
-</div>
+<div class="products" id="products"></div>
 
 </section>
+
 </div>
+
 
 <!-- PRODUCT PAGE -->
 
@@ -573,51 +582,60 @@ a {
 
 <div class="product-detail">
 
-  <div class="detail-gallery">
+<div class="detail-gallery">
 
-    <div class="detail-main-image">
-      <img id="detail-img">
-    </div>
-
-    <div class="thumbnails" id="thumbnails"></div>
-
+  <div class="detail-main-image">
+    <img id="detail-img">
   </div>
 
-  <div class="detail-info">
+  <div class="thumbnails" id="thumbnails"></div>
 
-    <div class="detail-name" id="detail-name"></div>
+</div>
 
-    <div class="detail-price" id="detail-price"></div>
+<div class="detail-info">
 
-    <div class="label">SELECT SIZE</div>
+  <div class="detail-name" id="detail-name"></div>
 
-    <div class="sizes">
-      <div class="size" onclick="selectSize(this)">S</div>
-      <div class="size" onclick="selectSize(this)">M</div>
-      <div class="size" onclick="selectSize(this)">L</div>
-      <div class="size" onclick="selectSize(this)">XL</div>
-    </div>
+  <div class="detail-price" id="detail-price"></div>
 
-    <div class="label">QUANTITY</div>
+  <button
+    id="product-wishlist-btn"
+    class="product-wishlist-btn"
+    onclick="toggleCurrentProductWishlist()"
+  >
+    ♡ ADD TO WISHLIST
+  </button>
 
-    <div class="quantity">
-      <button onclick="changeProductQuantity(-1)">−</button>
-      <span id="product-quantity">1</span>
-      <button onclick="changeProductQuantity(1)">+</button>
-    </div>
+  <div class="label">SELECT SIZE</div>
 
-    <button class="add-btn" onclick="addToBag()">
-      ADD TO BAG
-    </button>
-
-    <div class="description" id="detail-description"></div>
-
+  <div class="sizes">
+    <div class="size" onclick="selectSize(this)">S</div>
+    <div class="size" onclick="selectSize(this)">M</div>
+    <div class="size" onclick="selectSize(this)">L</div>
+    <div class="size" onclick="selectSize(this)">XL</div>
   </div>
+
+  <div class="label">QUANTITY</div>
+
+  <div class="quantity">
+    <button type="button" onclick="changeProductQuantity(-1)">−</button>
+    <span id="product-quantity">1</span>
+    <button type="button" onclick="changeProductQuantity(1)">+</button>
+  </div>
+
+  <button class="add-btn" onclick="addToBag()">
+    ADD TO BAG
+  </button>
+
+  <div class="description" id="detail-description"></div>
+
+</div>
 
 </div>
 </div>
 
-<!-- SEARCH PAGE -->
+
+<!-- SEARCH -->
 
 <div id="search-page" class="search-page">
 
@@ -626,7 +644,9 @@ a {
 <input
   id="search-input"
   class="search-box"
+  type="text"
   placeholder="SEARCH"
+  autocomplete="off"
   oninput="searchProducts()"
 >
 
@@ -634,7 +654,23 @@ a {
 
 </div>
 
-<!-- ABOUT PAGE -->
+
+<!-- WISHLIST -->
+
+<div id="wishlist-page" class="wishlist-page">
+
+<div class="back" onclick="showShop()">← BACK TO SHOP</div>
+
+<div class="section-head" style="padding-left:0; padding-right:0;">
+  <span>WISHLIST</span>
+</div>
+
+<div class="wishlist-results" id="wishlist-results"></div>
+
+</div>
+
+
+<!-- ABOUT -->
 
 <div id="about-page" class="about-page">
 
@@ -654,8 +690,8 @@ DROP 001 is the beginning.
 </p>
 
 <p>
-Built independently.
-No rules.
+Built independently.<br>
+No rules.<br>
 Make your own judgement.
 </p>
 
@@ -663,7 +699,8 @@ Make your own judgement.
 
 </div>
 
-<!-- CHECKOUT PAGE -->
+
+<!-- CHECKOUT -->
 
 <div id="checkout-page" class="checkout-page">
 
@@ -686,26 +723,27 @@ Make your own judgement.
 <input placeholder="PIN CODE">
 
 <button class="place-order" onclick="placeOrder()">
-  CONTINUE TO PAYMENT
+CONTINUE TO PAYMENT
 </button>
 
 </div>
 
 </div>
-
 </div>
+
 
 <!-- BAG OVERLAY -->
 
 <div id="bag-overlay" class="bag-overlay" onclick="closeBag()"></div>
+
 
 <!-- BAG -->
 
 <div id="bag" class="bag-panel">
 
 <div class="bag-header">
-  <strong>BAG</strong>
-  <span style="cursor:pointer" onclick="closeBag()">×</span>
+<strong>BAG</strong>
+<span style="cursor:pointer" onclick="closeBag()">×</span>
 </div>
 
 <div id="bag-items"></div>
@@ -713,59 +751,73 @@ Make your own judgement.
 <div class="bag-bottom">
 
 <div class="subtotal">
-  <span>SUBTOTAL</span>
-  <span id="subtotal">₹0</span>
+<span>SUBTOTAL</span>
+<span id="subtotal">₹0</span>
 </div>
 
 <button class="checkout" onclick="showCheckout()">
-  CHECKOUT
+CHECKOUT
 </button>
 
 </div>
 
 </div>
 
+
 <script>
 
 const products = [
 
-  {
-    name: "JUDGE / 001",
-    price: 2499,
-    images: [
-      "judge-001-front.jpeg"
-    ],
-    description: "Wide-leg denim.<br>Relaxed fit.<br>JUDGE DROP 001."
-  },
+{
+name: "JUDGE / 001",
+price: 2499,
+images: [
+  "judge-001-front.jpeg"
+],
+description: "Wide-leg denim.<br>Relaxed fit.<br>JUDGE DROP 001."
+},
 
-  {
-    name: "JUDGE / 002",
-    price: 2799,
-    images: [
-      "judge-002-front.jpeg"
-    ],
-    description: "Relaxed denim silhouette.<br>Designed for everyday wear.<br>JUDGE DROP 001."
-  },
+{
+name: "JUDGE / 002",
+price: 2799,
+images: [
+  "judge-002-front.jpeg"
+],
+description: "Relaxed denim silhouette.<br>Designed for everyday wear.<br>JUDGE DROP 001."
+},
 
-  {
-    name: "JUDGE / 003",
-    price: 2799,
-    images: [
-      "judge-003-front.jpeg"
-    ],
-    description: "Wide-leg fit.<br>Relaxed silhouette.<br>JUDGE DROP 001."
-  }
+{
+name: "JUDGE / 003",
+price: 2799,
+images: [
+  "judge-003-front.jpeg"
+],
+description: "Wide-leg fit.<br>Relaxed silhouette.<br>JUDGE DROP 001."
+}
 
 ];
 
 let currentProduct = null;
+let currentProductIndex = null;
 let selectedSize = null;
 let productQuantity = 1;
 let bag = [];
+let wishlist = [];
 
 
 function formatPrice(price) {
   return "₹" + price.toLocaleString("en-IN");
+}
+
+
+function isWishlisted(index) {
+  return wishlist.includes(index);
+}
+
+
+function updateWishlistCount() {
+  document.getElementById("wishlist-count").innerText =
+    wishlist.length;
 }
 
 
@@ -775,7 +827,53 @@ function hideAllPages() {
   document.getElementById("product-page").style.display = "none";
   document.getElementById("about-page").style.display = "none";
   document.getElementById("search-page").style.display = "none";
+  document.getElementById("wishlist-page").style.display = "none";
   document.getElementById("checkout-page").style.display = "none";
+
+}
+
+
+function createProductCard(product, index) {
+
+  const heart =
+    isWishlisted(index) ? "♥" : "♡";
+
+  return `
+    <article class="product" onclick="openProduct(${index})">
+
+      <button
+        class="heart-btn"
+        onclick="event.stopPropagation(); toggleWishlist(${index})"
+      >
+        ${heart}
+      </button>
+
+      <div class="product-image">
+        <img src="${product.images[0]}">
+      </div>
+
+      <div class="product-info">
+        ${formatPrice(product.price)}
+        &nbsp; ${product.name}
+      </div>
+
+    </article>
+  `;
+
+}
+
+
+function renderShop() {
+
+  const productsContainer =
+    document.getElementById("products");
+
+  productsContainer.innerHTML = "";
+
+  products.forEach(function(product, index) {
+    productsContainer.innerHTML +=
+      createProductCard(product, index);
+  });
 
 }
 
@@ -785,6 +883,8 @@ function showShop() {
   hideAllPages();
 
   document.getElementById("shop-page").style.display = "block";
+
+  renderShop();
 
   closeBag();
 
@@ -814,15 +914,121 @@ function showSearch() {
 
   closeBag();
 
-  document.getElementById("search-input").value = "";
+  const input =
+    document.getElementById("search-input");
 
-  document.getElementById("search-results").innerHTML = "";
+  input.value = "";
+
+  searchProducts();
 
   window.scrollTo(0, 0);
 
   setTimeout(function() {
-    document.getElementById("search-input").focus();
+    input.focus();
   }, 100);
+
+}
+
+
+function showWishlist() {
+
+  hideAllPages();
+
+  document.getElementById("wishlist-page").style.display =
+    "block";
+
+  closeBag();
+
+  renderWishlist();
+
+  window.scrollTo(0, 0);
+
+}
+
+
+function renderWishlist() {
+
+  const results =
+    document.getElementById("wishlist-results");
+
+  results.innerHTML = "";
+
+  if (wishlist.length === 0) {
+
+    results.innerHTML =
+      `<div class="empty-bag">YOUR WISHLIST IS EMPTY.</div>`;
+
+    return;
+
+  }
+
+  wishlist.forEach(function(index) {
+
+    results.innerHTML +=
+      createProductCard(products[index], index);
+
+  });
+
+}
+
+
+function toggleWishlist(index) {
+
+  if (isWishlisted(index)) {
+
+    wishlist = wishlist.filter(function(item) {
+      return item !== index;
+    });
+
+  } else {
+
+    wishlist.push(index);
+
+  }
+
+  updateWishlistCount();
+
+  renderShop();
+
+  if (
+    document.getElementById("wishlist-page")
+      .style.display === "block"
+  ) {
+    renderWishlist();
+  }
+
+  if (currentProductIndex === index) {
+    updateProductWishlistButton();
+  }
+
+}
+
+
+function toggleCurrentProductWishlist() {
+
+  if (currentProductIndex !== null) {
+    toggleWishlist(currentProductIndex);
+  }
+
+}
+
+
+function updateProductWishlistButton() {
+
+  const button =
+    document.getElementById("product-wishlist-btn");
+
+  if (isWishlisted(currentProductIndex)) {
+
+    button.innerText =
+      "♥ REMOVE FROM WISHLIST";
+
+  } else {
+
+    button.innerText =
+      "♡ ADD TO WISHLIST";
+
+  }
 
 }
 
@@ -830,15 +1036,21 @@ function showSearch() {
 function openProduct(index) {
 
   currentProduct = products[index];
+  currentProductIndex = index;
 
   hideAllPages();
 
-  document.getElementById("product-page").style.display = "block";
+  document.getElementById("product-page").style.display =
+    "block";
+
+  closeBag();
 
   selectedSize = null;
+
   productQuantity = 1;
 
-  document.getElementById("product-quantity").innerText = productQuantity;
+  document.getElementById("product-quantity").innerText =
+    "1";
 
   document.querySelectorAll(".size").forEach(function(size) {
     size.classList.remove("selected");
@@ -852,6 +1064,8 @@ function openProduct(index) {
 
   document.getElementById("detail-description").innerHTML =
     currentProduct.description;
+
+  updateProductWishlistButton();
 
   showProductImage(0);
 
@@ -928,10 +1142,12 @@ function addToBag() {
   }
 
   const existingItem = bag.find(function(item) {
+
     return (
       item.name === currentProduct.name &&
       item.size === selectedSize
     );
+
   });
 
   if (existingItem) {
@@ -941,11 +1157,13 @@ function addToBag() {
   } else {
 
     bag.push({
+
       name: currentProduct.name,
       price: currentProduct.price,
       image: currentProduct.images[0],
       size: selectedSize,
       quantity: productQuantity
+
     });
 
   }
@@ -1085,6 +1303,8 @@ function closeBag() {
 }
 
 
+/* SEARCH */
+
 function searchProducts() {
 
   const query =
@@ -1098,37 +1318,15 @@ function searchProducts() {
 
   results.innerHTML = "";
 
-  if (!query) {
-    return;
-  }
-
   products.forEach(function(product, index) {
 
     if (
+      query === "" ||
       product.name.toLowerCase().includes(query)
     ) {
 
-      results.innerHTML += `
-
-        <article
-          class="product"
-          onclick="openProduct(${index})"
-        >
-
-          <div class="product-image">
-            <img src="${product.images[0]}">
-          </div>
-
-          <div class="product-info">
-            <span>
-              ${formatPrice(product.price)}
-              &nbsp; ${product.name}
-            </span>
-          </div>
-
-        </article>
-
-      `;
+      results.innerHTML +=
+        createProductCard(product, index);
 
     }
 
@@ -1136,6 +1334,8 @@ function searchProducts() {
 
 }
 
+
+/* CHECKOUT */
 
 function showCheckout() {
 
@@ -1156,7 +1356,8 @@ function showCheckout() {
 
   let total = 0;
 
-  summary.innerHTML = "<div class='label'>ORDER SUMMARY</div><br>";
+  summary.innerHTML =
+    "<div class='label'>ORDER SUMMARY</div><br>";
 
   bag.forEach(function(item) {
 
@@ -1166,26 +1367,36 @@ function showCheckout() {
     total += itemTotal;
 
     summary.innerHTML += `
+
       <div class="subtotal">
+
         <span>
           ${item.name} × ${item.quantity}
         </span>
+
         <span>
           ${formatPrice(itemTotal)}
         </span>
+
       </div>
+
     `;
 
   });
 
   summary.innerHTML += `
-    <div
-      class="subtotal"
-      style="border-top:1px solid #ddd; padding-top:15px; margin-top:15px"
-    >
+
+    <div class="subtotal"
+      style="border-top:1px solid #ddd;
+      padding-top:15px;
+      margin-top:15px">
+
       <strong>TOTAL</strong>
+
       <strong>${formatPrice(total)}</strong>
+
     </div>
+
   `;
 
   window.scrollTo(0, 0);
@@ -1195,11 +1406,15 @@ function showCheckout() {
 
 function placeOrder() {
 
-  alert(
-    "PAYMENT INTEGRATION WILL BE CONNECTED NEXT."
-  );
+  alert("PAYMENT INTEGRATION WILL BE CONNECTED NEXT.");
 
 }
+
+
+/* START WEBSITE */
+
+renderShop();
+updateWishlistCount();
 
 </script>
 
