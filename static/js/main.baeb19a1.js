@@ -11216,9 +11216,9 @@
         ]
       }
     ], JUDGE_PRODUCT_IMAGES = {
-      'judge-001': '/static/media/judge-001.png',
-      'judge-002': '/static/media/judge-002.png',
-      'judge-003': '/static/media/judge-003.png'
+      'judge-001': 'static/media/judge-001.png',
+      'judge-002': 'static/media/judge-002.png',
+      'judge-003': 'static/media/judge-003.png'
     }, yn = [
       'front',
       'detail',
