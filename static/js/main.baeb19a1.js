@@ -13337,7 +13337,7 @@
     });
   }
   function ir() {
-    return (0, Rn.jsx)(Ut, { children: (0, Rn.jsx)(lr, {}) });
+    return (0, Rn.jsx)(Ut, { basename: '/judge-store', children: (0, Rn.jsx)(lr, {}) });
   }
   o.createRoot(document.getElementById('root')).render((0, Rn.jsx)(r.StrictMode, { children: (0, Rn.jsx)(ir, {}) }));
 })();
