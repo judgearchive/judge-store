@@ -171,6 +171,23 @@ a {
   color: #555;
 }
 
+/* BAG OVERLAY */
+
+.bag-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 9;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.bag-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* BAG */
 
 .bag-panel {
@@ -362,6 +379,11 @@ a {
 </div>
 
 
+<!-- BAG OVERLAY -->
+
+<div id="bag-overlay" class="bag-overlay" onclick="closeBag()"></div>
+
+
 <!-- BAG -->
 
 <div id="bag" class="bag-panel">
@@ -393,161 +415,3 @@ const products = [
     price: "₹2,799",
     image: "judge-002-front.jpeg"
   },
-
-  {
-    name: "JUDGE / 003",
-    price: "₹2,799",
-    image: "judge-003-front.jpeg"
-  }
-
-];
-
-let currentProduct = null;
-let selectedSize = null;
-let bag = [];
-
-
-function openProduct(index) {
-
-  currentProduct = products[index];
-
-  document.getElementById("shop-page").style.display = "none";
-  document.getElementById("product-page").style.display = "block";
-
-  document.getElementById("detail-img").src = currentProduct.image;
-  document.getElementById("detail-name").innerText = currentProduct.name;
-  document.getElementById("detail-price").innerText = currentProduct.price;
-
-  selectedSize = null;
-
-  document.querySelectorAll(".size").forEach(size => {
-    size.classList.remove("selected");
-  });
-
-  window.scrollTo(0, 0);
-}
-
-
-function goBack() {
-    document.getElementById("product-page").style.display = "none";
-    document.getElementById("shop-page").style.display = "block";
-    document.getElementById("bag").classList.remove("open");
-    window.scrollTo(0, 0);
-}
-
-
-function selectSize(element) {
-
-  document.querySelectorAll(".size").forEach(size => {
-    size.classList.remove("selected");
-  });
-
-  element.classList.add("selected");
-
-  selectedSize = element.innerText;
-
-}
-
-
-function addToBag() {
-
-  if (!selectedSize) {
-    alert("SELECT A SIZE");
-    return;
-  }
-
-  bag.push({
-    ...currentProduct,
-    size: selectedSize
-  });
-
-  updateBag();
-
-  openBag();
-
-}
-
-
-function updateBag() {
-
-  document.getElementById("bag-count").innerText = bag.length;
-
-  const bagItems = document.getElementById("bag-items");
-
-  bagItems.innerHTML = "";
-
-  bag.forEach((item, index) => {
-
-    bagItems.innerHTML += `
-
-      <div class="bag-item">
-
-        <img src="${item.image}">
-
-        <div>
-
-          <div style="font-size:12px">${item.name}</div>
-
-          <div style="font-size:11px; margin-top:5px">
-            ${item.price}
-          </div>
-
-          <div style="font-size:11px; margin-top:5px">
-            SIZE ${item.size}
-          </div>
-
-          <span class="remove" onclick="removeItem(${index})">
-            REMOVE
-          </span>
-
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-}
-
-
-function removeItem(index) {
-
-  bag.splice(index, 1);
-
-  updateBag();
-
-}
-
-
-function openBag() {
-  document.getElementById("bag").classList.add("open");
-}
-
-function closeBag() {
-  document.getElementById("bag").classList.remove("open");
-}
-
-document.addEventListener("click", function(event) {
-  const bag = document.getElementById("bag");
-
-  if (!bag.classList.contains("open")) return;
-
-  const clickedInsideBag = bag.contains(event.target);
-  const clickedOpenBagButton = event.target.closest('[onclick="openBag()"]');
-  const clickedAddToBag = event.target.closest('[onclick="addToBag()"]');
-
-  if (
-    !clickedInsideBag &&
-    !clickedOpenBagButton &&
-    !clickedAddToBag
-  ) {
-    closeBag();
-  }
-});
-
-
-</script>
-
-</body>
-</html>
