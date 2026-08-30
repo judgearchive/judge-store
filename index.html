@@ -521,15 +521,30 @@ function removeItem(index) {
 
 
 function openBag() {
-
   document.getElementById("bag").classList.add("open");
-
 }
-
 
 function closeBag() {
   document.getElementById("bag").classList.remove("open");
 }
+
+document.addEventListener("click", function(event) {
+  const bag = document.getElementById("bag");
+
+  if (!bag.classList.contains("open")) return;
+
+  const clickedInsideBag = bag.contains(event.target);
+  const clickedOpenBagButton = event.target.closest('[onclick="openBag()"]');
+  const clickedAddToBag = event.target.closest('[onclick="addToBag()"]');
+
+  if (
+    !clickedInsideBag &&
+    !clickedOpenBagButton &&
+    !clickedAddToBag
+  ) {
+    closeBag();
+  }
+});
 
 
 </script>
