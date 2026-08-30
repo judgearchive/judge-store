@@ -11215,7 +11215,11 @@
           'Oversized box silhouette'
         ]
       }
-    ], yn = [
+    ], JUDGE_PRODUCT_IMAGES = {
+      'judge-001': '/static/media/judge-001.png',
+      'judge-002': '/static/media/judge-002.png',
+      'judge-003': '/static/media/judge-003.png'
+    }, yn = [
       'front',
       'detail',
       'back'
@@ -11636,7 +11640,7 @@
     });
   }
   function Fn(e) {
-    let t = e.product, n = e.view, r = void 0 === n ? 'front' : n, a = e.compact, o = void 0 !== a && a;
+    let t = e.product, n = e.view, r = void 0 === n ? 'front' : n, a = e.compact, o = void 0 !== a && a, JUDGE_photo = JUDGE_PRODUCT_IMAGES[t.id];
     return (0, Rn.jsxs)('div', {
       className: 'schematic-panel schematic-'.concat(t.shape, ' ').concat(o ? 'schematic-compact' : ''),
       'data-testid': 'schematic-panel-'.concat(t.id, '-').concat(r),
@@ -11649,7 +11653,11 @@
             (0, Rn.jsx)('span', { children: 'JDG / 01' })
           ]
         }),
-        (0, Rn.jsxs)('svg', {
+        JUDGE_photo ? (0, Rn.jsx)('img', {
+          src: JUDGE_photo,
+          alt: t.name,
+          className: 'schematic-photo'
+        }) : (0, Rn.jsxs)('svg', {
           viewBox: '0 0 600 700',
           role: 'img',
           'aria-label': ''.concat(t.name, ' structural garment panel'),

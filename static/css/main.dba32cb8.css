@@ -2545,6 +2545,13 @@ body.no-scroll,html.no-scroll {
   height:100%;
   width:100%;
 }
+.schematic-photo {
+  display:block;
+  height:100%;
+  width:100%;
+  object-fit:cover;
+  object-position:center;
+}
 .schematic-grid {
   opacity:.75;
 }
