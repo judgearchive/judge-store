@@ -1,259 +1,259 @@
 <!DOCTYPE html>
-<html lang=”en”>
+<html lang="en">
 <head>
-<meta charset=”UTF-8”>
-<meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>JUDGE — Official Store</title>
 
 <style>
-•	{
-  Margin: 0;
-  Padding: 0;
-  Box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-Html {
-  Scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-Body {
-  Font-family: Arial, Helvetica, sans-serif;
-  Color: #111;
-  Background: #fff;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+  background: #fff;
 }
 
-A, button {
-  Color: inherit;
-  Text-decoration: none;
-  Font-family: inherit;
+a, button {
+  color: inherit;
+  text-decoration: none;
+  font-family: inherit;
 }
 
-Button {
-  Background: none;
-  Border: none;
-  Cursor: pointer;
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* HEADER */
 
-Header {
-  Height: 64px;
-  Padding: 0 28px;
-  Display: flex;
-  Align-items: center;
-  Justify-content: space-between;
-  Border-bottom: 1px solid #ddd;
-  Background: #fff;
-  Position: sticky;
-  Top: 0;
+header {
+  height: 64px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  position: sticky;
+  top: 0;
   z-index: 100;
 }
 
 .left-nav,
 .right-nav {
-  Display: flex;
-  Align-items: center;
-  Gap: 22px;
-  Width: 33%;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: 33%;
 }
 
 .right-nav {
-  Justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .nav-link {
-  Font-size: 11px;
-  Text-transform: uppercase;
-  Letter-spacing: .5px;
-  Cursor: pointer;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  cursor: pointer;
 }
 
 .logo {
-  Font-size: 34px;
-  Font-weight: 900;
-  Letter-spacing: -3px;
-  Text-align: center;
-  Width: 34%;
-  Cursor: pointer;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -3px;
+  text-align: center;
+  width: 34%;
+  cursor: pointer;
 }
 
 #bag-count {
-  Font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums;
 }
 
 /* HERO */
 
 .hero {
-  Min-height: calc(100vh – 64px);
-  Background: #e8e8e8;
-  Display: flex;
-  Flex-direction: column;
-  Justify-content: space-between;
-  Padding: 35px 28px;
+  min-height: calc(100vh - 64px);
+  background: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 35px 28px;
 }
 
 .hero-top {
-  Display: flex;
-  Justify-content: space-between;
-  Font-size: 11px;
-  Text-transform: uppercase;
-  Letter-spacing: .5px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
 }
 
 .hero-center {
-  Margin: auto;
-  Text-align: center;
+  margin: auto;
+  text-align: center;
 }
 
 .hero-title {
-  Font-size: clamp(80px, 17vw, 260px);
-  Font-weight: 900;
-  Letter-spacing: -0.09em;
-  Line-height: .8;
+  font-size: clamp(80px, 17vw, 260px);
+  font-weight: 900;
+  letter-spacing: -0.09em;
+  line-height: .8;
 }
 
 .hero-subtitle {
-  Margin-top: 28px;
-  Font-size: 12px;
-  Letter-spacing: 2px;
-  Text-transform: uppercase;
+  margin-top: 28px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .shop-button {
-  Display: inline-block;
-  Margin-top: 28px;
-  Padding: 14px 24px;
-  Background: #111;
-  Color: white;
-  Font-size: 11px;
-  Text-transform: uppercase;
-  Letter-spacing: 1px;
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 24px;
+  background: #111;
+  color: white;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .hero-bottom {
-  Display: flex;
-  Justify-content: space-between;
-  Align-items: flex-end;
-  Font-size: 11px;
-  Text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 11px;
+  text-transform: uppercase;
 }
 
 /* COLLECTION */
 
 .collection {
-  Padding: 120px 28px 80px;
-  Scroll-margin-top: 64px;
+  padding: 120px 28px 80px;
+  scroll-margin-top: 64px;
 }
 
 .section-head {
-  Display: flex;
-  Justify-content: space-between;
-  Align-items: center;
-  Margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
 }
 
 .section-title {
-  Font-size: 12px;
-  Text-transform: uppercase;
-  Font-weight: normal;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: normal;
 }
 
 .view-all {
-  Font-size: 11px;
-  Text-transform: uppercase;
-  Border-bottom: 1px solid #111;
-  Padding-bottom: 2px;
-  Cursor: pointer;
+  font-size: 11px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #111;
+  padding-bottom: 2px;
+  cursor: pointer;
 }
 
 .products {
-  Display: grid;
-  Grid-template-columns: repeat(3, 1fr);
-  Gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
 .product {
-  Width: 100%;
-  Text-align: left;
-  Cursor: pointer;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
 }
 
 .product-image {
-  Aspect-ratio: 3 / 4;
-  Background: #e9e9e9;
-  Overflow: hidden;
-  Position: relative;
+  aspect-ratio: 3 / 4;
+  background: #e9e9e9;
+  overflow: hidden;
+  position: relative;
 }
 
 .product-image svg {
-  Width: 100%;
-  Height: 100%;
-  Display: block;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .wishlist-btn {
-  Position: absolute;
-  Top: 10px;
-  Right: 10px;
-  Width: 38px;
-  Height: 38px;
-  Background: rgba(255,255,255,.94);
-  Border: 1px solid #ddd;
-  Font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 38px;
+  height: 38px;
+  background: rgba(255,255,255,.94);
+  border: 1px solid #ddd;
+  font-size: 20px;
   z-index: 5;
 }
 
 .wishlist-btn.active {
-  Color: red;
-  Border-color: red;
+  color: red;
+  border-color: red;
 }
 
 .quick-add {
-  Position: absolute;
-  Left: 0;
-  Right: 0;
-  Bottom: 0;
-  Display: flex;
-  Transform: translateY(100%);
-  Transition: transform .25s ease;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  transform: translateY(100%);
+  transition: transform .25s ease;
 }
 
 .product:hover .quick-add {
-  Transform: translateY(0);
+  transform: translateY(0);
 }
 
 .size-btn {
-  Flex: 1;
-  Background: rgba(255,255,255,.95);
-  Font-size: 10px;
-  Padding: 10px 0;
-  Border-right: 1px solid #ddd;
+  flex: 1;
+  background: rgba(255,255,255,.95);
+  font-size: 10px;
+  padding: 10px 0;
+  border-right: 1px solid #ddd;
 }
 
 .size-btn:hover {
-  Background: #111;
-  Color: white;
+  background: #111;
+  color: white;
 }
 
 .product-info {
-  Padding: 12px 0 25px;
-  Display: flex;
-  Justify-content: space-between;
-  Font-size: 11px;
-  Text-transform: uppercase;
+  padding: 12px 0 25px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  text-transform: uppercase;
 }
 
 .product-price {
-  Color: #555;
+  color: #555;
 }
 
 /* MODAL */
 
 .modal-backdrop {
-  Position: fixed;
-  Inset: 0;
-  Background: rgba(17,17,17,.55);
+  position: fixed;
+  inset: 0;
+  background: rgba(17,17,17,.55);
   z-index: 300;
   display: flex;
   align-items: center;
@@ -265,125 +265,125 @@ Header {
 }
 
 .modal-backdrop.open {
-  Opacity: 1;
-  Pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modal {
-  Background: white;
-  Width: min(760px, 100%);
-  Max-height: 88vh;
-  Overflow-y: auto;
-  Display: grid;
-  Grid-template-columns: 1fr 1fr;
+  background: white;
+  width: min(760px, 100%);
+  max-height: 88vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .modal-image {
-  Aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 4;
 }
 
 .modal-image svg {
-  Width: 100%;
-  Height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .modal-body {
-  Padding: 32px 28px;
-  Display: flex;
-  Flex-direction: column;
-  Gap: 18px;
-  Position: relative;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
 }
 
 .close-btn {
-  Position: absolute;
-  Top: 14px;
-  Right: 14px;
-  Font-size: 20px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 20px;
 }
 
 .modal-name {
-  Font-size: 13px;
-  Text-transform: uppercase;
-  Letter-spacing: .5px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
 }
 
 .modal-price {
-  Font-size: 20px;
+  font-size: 20px;
 }
 
 .modal-desc {
-  Font-size: 12px;
-  Color: #555;
-  Line-height: 1.6;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
 }
 
 .modal-sizes {
-  Display: flex;
-  Gap: 6px;
+  display: flex;
+  gap: 6px;
 }
 
 .modal-sizes .size-btn {
-  Background: #f2f2f2;
-  Color: #111;
-  Border: 1px solid #ddd;
+  background: #f2f2f2;
+  color: #111;
+  border: 1px solid #ddd;
 }
 
 .modal-sizes .size-btn.selected {
-  Background: #111;
-  Color: white;
+  background: #111;
+  color: white;
 }
 
 /* QUANTITY */
 
 .quantity-selector {
-  Display: flex;
-  Width: 170px;
-  Border: 1px solid #ddd;
+  display: flex;
+  width: 170px;
+  border: 1px solid #ddd;
 }
 
 .quantity-selector button,
 .quantity-selector span {
-  Width: 56px;
-  Height: 44px;
-  Display: flex;
-  Align-items: center;
-  Justify-content: center;
+  width: 56px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .quantity-selector span {
-  Border-left: 1px solid #ddd;
-  Border-right: 1px solid #ddd;
-  Font-size: 12px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  font-size: 12px;
 }
 
 .modal-status {
-  Font-size: 10px;
-  Text-transform: uppercase;
-  Color: #777;
-  Min-height: 14px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #777;
+  min-height: 14px;
 }
 
 .modal-add {
-  Margin-top: auto;
-  Padding: 14px 0;
-  Background: #111;
-  Color: white;
-  Text-transform: uppercase;
-  Font-size: 11px;
-  Letter-spacing: 1px;
+  margin-top: auto;
+  padding: 14px 0;
+  background: #111;
+  color: white;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
 }
 
 .modal-add:disabled {
-  Background: #ccc;
+  background: #ccc;
 }
 
 /* SEARCH */
 
 .search-panel {
-  Position: fixed;
-  Inset: 0;
-  Background: rgba(255,255,255,.98);
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,.98);
   z-index: 200;
   display: flex;
   align-items: flex-start;
@@ -395,108 +395,108 @@ Header {
 }
 
 .search-panel.open {
-  Opacity: 1;
-  Pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .search-inner {
-  Width: min(560px, 86vw);
-  Text-align: center;
+  width: min(560px, 86vw);
+  text-align: center;
 }
 
 .search-inner input {
-  Width: 100%;
-  Border: none;
-  Border-bottom: 2px solid #111;
-  Font-size: 30px;
-  Padding: 6px 0;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #111;
+  font-size: 30px;
+  padding: 6px 0;
 }
 
 .search-close {
-  Margin-top: 18px;
-  Font-size: 11px;
-  Border-bottom: 1px solid #111;
+  margin-top: 18px;
+  font-size: 11px;
+  border-bottom: 1px solid #111;
 }
 
 /* ABOUT */
 
 .about-section {
-  Padding: 120px 28px;
-  Min-height: 70vh;
+  padding: 120px 28px;
+  min-height: 70vh;
 }
 
 .about-section h2 {
-  Font-size: 32px;
-  Margin-bottom: 30px;
+  font-size: 32px;
+  margin-bottom: 30px;
 }
 
 .about-section p {
-  Max-width: 600px;
-  Font-size: 14px;
-  Line-height: 1.8;
-  Margin-bottom: 20px;
+  max-width: 600px;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
 
 /* TOAST */
 
 .toast {
-  Position: fixed;
-  Bottom: 25px;
-  Left: 50%;
-  Transform: translateX(-50%) translateY(20px);
-  Background: #111;
-  Color: white;
-  Padding: 12px 18px;
-  Font-size: 11px;
-  Opacity: 0;
-  Transition: .2s;
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #111;
+  color: white;
+  padding: 12px 18px;
+  font-size: 11px;
+  opacity: 0;
+  transition: .2s;
   z-index: 500;
 }
 
 .toast.show {
-  Opacity: 1;
-  Transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* MOBILE */
 
 @media (max-width: 700px) {
 
-  Header {
-    Padding: 0 15px;
+  header {
+    padding: 0 15px;
   }
 
   .left-nav,
   .right-nav {
-    Gap: 10px;
+    gap: 10px;
   }
 
   .nav-link {
-    Font-size: 9px;
+    font-size: 9px;
   }
 
   .logo {
-    Font-size: 26px;
+    font-size: 26px;
   }
 
   .hero {
-    Padding: 25px 15px;
+    padding: 25px 15px;
   }
 
   .collection {
-    Padding: 90px 15px 60px;
+    padding: 90px 15px 60px;
   }
 
   .products {
-    Grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
   .modal {
-    Grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
   .modal-image {
-    Max-height: 50vh;
+    max-height: 50vh;
   }
 
 }
@@ -507,73 +507,73 @@ Header {
 
 <header>
 
-  <div class=”left-nav”>
-    <button class=”nav-link” id=”shop-link”>SHOP</button>
-    <button class=”nav-link” id=”about-link”>ABOUT</button>
+  <div class="left-nav">
+    <button class="nav-link" id="shop-link">SHOP</button>
+    <button class="nav-link" id="about-link">ABOUT</button>
   </div>
 
-  <div class=”logo” id=”home-logo”>JUDGE</div>
+  <div class="logo" id="home-logo">JUDGE</div>
 
-  <div class=”right-nav”>
-    <button class=”nav-link” id=”search-trigger”>SEARCH</button>
-    <button class=”nav-link”>BAG (<span id=”bag-count”>0</span>)</button>
+  <div class="right-nav">
+    <button class="nav-link" id="search-trigger">SEARCH</button>
+    <button class="nav-link">BAG (<span id="bag-count">0</span>)</button>
   </div>
 
 </header>
 
 <main>
 
-<section class=”hero” id=”home”>
+<section class="hero" id="home">
 
-  <div class=”hero-top”>
+  <div class="hero-top">
     <span>JUDGE</span>
     <span>DROP 001</span>
   </div>
 
-  <div class=”hero-center”>
-    <div class=”hero-title”>JUDGE</div>
+  <div class="hero-center">
+    <div class="hero-title">JUDGE</div>
 
-    <div class=”hero-subtitle”>
+    <div class="hero-subtitle">
       DROP 001 / COMING SOON
     </div>
 
-    <button class=”shop-button” id=”shop-now”>
+    <button class="shop-button" id="shop-now">
       SHOP COLLECTION
     </button>
   </div>
 
-  <div class=”hero-bottom”>
+  <div class="hero-bottom">
     <span>INDEPENDENT CLOTHING</span>
     <span>EST. 2026</span>
   </div>
 
 </section>
 
-<section class=”collection” id=”shop”>
+<section class="collection" id="shop">
 
-  <div class=”section-head”>
+  <div class="section-head">
 
-    <h2 class=”section-title”>
+    <h2 class="section-title">
       DROP 001 / NEW ARRIVALS
     </h2>
 
-    <button class=”view-all” id=”view-all”>
+    <button class="view-all" id="view-all">
       VIEW ALL
     </button>
 
   </div>
 
-  <div class=”products” id=”products”></div>
+  <div class="products" id="products"></div>
 
 </section>
 
-<section class=”about-section” id=”about”>
+<section class="about-section" id="about">
 
 <h2>JUDGE</h2>
 
 <p>
 JUDGE is an independent clothing project focused on denim,
-Silhouette and everyday pieces.
+silhouette and everyday pieces.
 </p>
 
 <p>
@@ -588,23 +588,23 @@ Built independently. No rules. Make your own judgement.
 
 </main>
 
-<!—SEARCH 
+<!-- SEARCH -->
 
-<div class=”search-panel” id=”search-panel”>
+<div class="search-panel" id="search-panel">
 
-<div class=”search-inner”>
+<div class="search-inner">
 
 <input
-Id=”search-input”
-Placeholder=”SEARCH”
-Autocomplete=”off”
+id="search-input"
+placeholder="SEARCH"
+autocomplete="off"
 >
 
-<div id=”search-results”>
+<div id="search-results">
 Try “denim”, “jacket”, or a product name
 </div>
 
-<button class=”search-close” id=”search-close”>
+<button class="search-close" id="search-close">
 CLOSE
 </button>
 
@@ -612,45 +612,45 @@ CLOSE
 
 </div>
 
-<!—PRODUCT MODAL 
+<!-- PRODUCT MODAL -->
 
-<div class=”modal-backdrop” id=”modal-backdrop”>
+<div class="modal-backdrop" id="modal-backdrop">
 
-<div class=”modal”>
+<div class="modal">
 
-<div class=”modal-image” id=”modal-image”></div>
+<div class="modal-image" id="modal-image"></div>
 
-<div class=”modal-body”>
+<div class="modal-body">
 
-<button class=”close-btn” id=”modal-close”>×</button>
+<button class="close-btn" id="modal-close">×</button>
 
-<div class=”modal-name” id=”modal-name”></div>
+<div class="modal-name" id="modal-name"></div>
 
-<div class=”modal-price” id=”modal-price”></div>
+<div class="modal-price" id="modal-price"></div>
 
-<div class=”modal-desc” id=”modal-desc”></div>
+<div class="modal-desc" id="modal-desc"></div>
 
 <div>SELECT SIZE</div>
 
-<div class=”modal-sizes” id=”modal-sizes”></div>
+<div class="modal-sizes" id="modal-sizes"></div>
 
 <div>QUANTITY</div>
 
-<div class=”quantity-selector”>
+<div class="quantity-selector">
 
-<button type=”button” id=”qty-minus”>−</button>
+<button type="button" id="qty-minus">−</button>
 
-<span id=”qty-value”>1</span>
+<span id="qty-value">1</span>
 
-<button type=”button” id=”qty-plus”>+</button>
+<button type="button" id="qty-plus">+</button>
 
 </div>
 
-<div class=”modal-status” id=”modal-status”>
+<div class="modal-status" id="modal-status">
 SELECT A SIZE
 </div>
 
-<button class=”modal-add” id=”modal-add” disabled>
+<button class="modal-add" id="modal-add" disabled>
 ADD TO BAG
 </button>
 
@@ -660,76 +660,76 @@ ADD TO BAG
 
 </div>
 
-<div class=”toast” id=”toast”></div>
+<div class="toast" id="toast"></div>
 
 <script>
 
-Const SIZES = [‘S’, ‘M’, ‘L’, ‘XL’];
+const SIZES = ['S', 'M', 'L', 'XL'];
 
-Const products = [
+const products = [
 
 {
-  Id: 1,
-  Name: ‘JUDGE / 001’,
-  Title: ‘Raw Selvedge Jean’,
-  Price: 2499,
-  Color: ‘#3b4a63’,
-  Desc: ‘Rigid raw denim, straight cut. Built to crease and fade with wear.’
+  id: 1,
+  name: 'JUDGE / 001',
+  title: 'Raw Selvedge Jean',
+  price: 2499,
+  color: '#3b4a63',
+  desc: 'Rigid raw denim, straight cut. Built to crease and fade with wear.'
 },
 
 {
-  Id: 2,
-  Name: ‘JUDGE / 002’,
-  Title: ‘Washed Trucker Jacket’,
-  Price: 2799,
-  Color: ‘#5c6b52’,
-  Desc: ‘Stonewashed denim jacket with a boxy silhouette.’
+  id: 2,
+  name: 'JUDGE / 002',
+  title: 'Washed Trucker Jacket',
+  price: 2799,
+  color: '#5c6b52',
+  desc: 'Stonewashed denim jacket with a boxy silhouette.'
 },
 
 {
-  Id: 3,
-  Name: ‘JUDGE / 003’,
-  Title: ‘Carpenter Wide Leg’,
-  Price: 2999,
-  Color: ‘#403a45’,
-  Desc: ‘Heavyweight wide-leg denim with a relaxed fit.’
+  id: 3,
+  name: 'JUDGE / 003',
+  title: 'Carpenter Wide Leg',
+  price: 2999,
+  color: '#403a45',
+  desc: 'Heavyweight wide-leg denim with a relaxed fit.'
 }
 
 ];
 
-Const bag = [];
+const bag = [];
 
-Function productSvg(product) {
+function productSvg(product) {
 
-Return `
-<svg viewBox=”0 0 300 400”
-Xmlns=http://www.w3.org/2000/svg>
+return `
+<svg viewBox="0 0 300 400"
+xmlns="http://www.w3.org/2000/svg">
 
 <defs>
 
-<linearGradient id=”grad${product.id}”
-X1=”0” y1=”0” x2=”1” y2=”1”>
+<linearGradient id="grad${product.id}"
+x1="0" y1="0" x2="1" y2="1">
 
-<stop offset=”0%” stop-color=”${product.color}”/>
+<stop offset="0%" stop-color="${product.color}"/>
 
-<stop offset=”100%” stop-color=”#111”/>
+<stop offset="100%" stop-color="#111"/>
 
 </linearGradient>
 
 </defs>
 
-<rect width=”300” height=”400”
-Fill=”url(#grad${product.id})”/>
+<rect width="300" height="400"
+fill="url(#grad${product.id})"/>
 
 <text
-X=”150”
-Y=”200”
-Fill=”white”
-Fill-opacity=”.85”
-Font-family=”Arial”
-Font-size=”12”
-Letter-spacing=”2”
-Text-anchor=”middle”>
+x="150"
+y="200"
+fill="white"
+fill-opacity=".85"
+font-family="Arial"
+font-size="12"
+letter-spacing="2"
+text-anchor="middle">
 
 ${product.name}
 
@@ -742,53 +742,53 @@ ${product.name}
 
 /* RENDER PRODUCTS */
 
-Const productsEl = document.getElementById(‘products’);
+const productsEl = document.getElementById('products');
 
-Function renderProducts() {
+function renderProducts() {
 
 productsEl.innerHTML = products.map(p => `
 
-<article class=”product”
-Data-id=”${p.id}”>
+<article class="product"
+data-id="${p.id}">
 
-<div class=”product-image”>
+<div class="product-image">
 
-<button class=”wishlist-btn”>♡</button>
+<button class="wishlist-btn">♡</button>
 
 ${productSvg(p)}
 
-<div class=”quick-add”>
+<div class="quick-add">
 
 ${SIZES.map(size => `
 
 <button
-Class=”size-btn”
-Data-id=”${p.id}”
-Data-size=”${size}”>
+class="size-btn"
+data-id="${p.id}"
+data-size="${size}">
 
 ${size}
 
 </button>
 
-`).join(‘’)}
+`).join('')}
 
 </div>
 
 </div>
 
-<div class=”product-info”>
+<div class="product-info">
 
 <span>${p.name}</span>
 
-<span class=”product-price”>
-₹${p.price.toLocaleString(‘en-IN’)}
+<span class="product-price">
+₹${p.price.toLocaleString('en-IN')}
 </span>
 
 </div>
 
 </article>
 
-`).join(‘’);
+`).join('');
 
 }
 
@@ -796,12 +796,12 @@ renderProducts();
 
 /* BAG */
 
-Const bagCountEl =
-Document.getElementById(‘bag-count’);
+const bagCountEl =
+document.getElementById('bag-count');
 
-Function updateBagCount() {
+function updateBagCount() {
 
-Const total = bag.reduce(
+const total = bag.reduce(
 (sum, item) => sum + item.quantity,
 0
 );
@@ -810,15 +810,15 @@ bagCountEl.textContent = total;
 
 }
 
-Function addToBag(productId, size, quantity = 1) {
+function addToBag(productId, size, quantity = 1) {
 
-Const product = products.find(
-P => p.id === Number(productId)
+const product = products.find(
+p => p.id === Number(productId)
 );
 
-If (!product) return;
+if (!product) return;
 
-Bag.push({
+bag.push({
 productId,
 size,
 quantity
@@ -834,22 +834,22 @@ showToast(
 
 /* TOAST */
 
-Const toastEl =
-Document.getElementById(‘toast’);
+const toastEl =
+document.getElementById('toast');
 
-Let toastTimer;
+let toastTimer;
 
-Function showToast(message) {
+function showToast(message) {
 
 toastEl.textContent = message;
 
-toastEl.classList.add(‘show’);
+toastEl.classList.add('show');
 
 clearTimeout(toastTimer);
 
 toastTimer = setTimeout(() => {
 
-toastEl.classList.remove(‘show’);
+toastEl.classList.remove('show');
 
 }, 2200);
 
@@ -858,29 +858,29 @@ toastEl.classList.remove(‘show’);
 /* PRODUCT CLICK */
 
 productsEl.addEventListener(
-‘click’,
-Function€ {
+'click',
+function(e) {
 
-Const heart =
-e.target.closest(‘.wishlist-btn’);
+const heart =
+e.target.closest('.wishlist-btn');
 
 if (heart) {
 
 e.stopPropagation();
 
-heart.classList.toggle(‘active’);
+heart.classList.toggle('active');
 
 heart.textContent =
-heart.classList.contains(‘active’)
-? ‘♥’
-: ‘♡’;
+heart.classList.contains('active')
+? '♥'
+: '♡';
 
-Return;
+return;
 
 }
 
-Const sizeBtn =
-e.target.closest(‘.size-btn’);
+const sizeBtn =
+e.target.closest('.size-btn');
 
 if (sizeBtn) {
 
@@ -892,12 +892,12 @@ sizeBtn.dataset.size,
 1
 );
 
-Return;
+return;
 
 }
 
-Const productCard =
-e.target.closest(‘.product’);
+const productCard =
+e.target.closest('.product');
 
 if (productCard) {
 
@@ -912,37 +912,37 @@ Number(productCard.dataset.id)
 
 /* MODAL */
 
-Const backdrop =
-Document.getElementById(‘modal-backdrop’);
+const backdrop =
+document.getElementById('modal-backdrop');
 
-Const modalImage =
-Document.getElementById(‘modal-image’);
+const modalImage =
+document.getElementById('modal-image');
 
-Const modalName =
-Document.getElementById(‘modal-name’);
+const modalName =
+document.getElementById('modal-name');
 
-Const modalPrice =
-Document.getElementById(‘modal-price’);
+const modalPrice =
+document.getElementById('modal-price');
 
-Const modalDesc =
-Document.getElementById(‘modal-desc’);
+const modalDesc =
+document.getElementById('modal-desc');
 
-Const modalSizes =
-Document.getElementById(‘modal-sizes’);
+const modalSizes =
+document.getElementById('modal-sizes');
 
-Const modalAdd =
-Document.getElementById(‘modal-add’);
+const modalAdd =
+document.getElementById('modal-add');
 
-Const modalStatus =
-Document.getElementById(‘modal-status’);
+const modalStatus =
+document.getElementById('modal-status');
 
-Let activeProduct = null;
+let activeProduct = null;
 
-Let activeSize = null;
+let activeSize = null;
 
-Let modalQuantity = 1;
+let modalQuantity = 1;
 
-Function openModal(id) {
+function openModal(id) {
 
 activeProduct =
 products.find(p => p.id === id);
@@ -951,7 +951,7 @@ activeSize = null;
 
 modalQuantity = 1;
 
-document.getElementById(‘qty-value’)
+document.getElementById('qty-value')
 .textContent = modalQuantity;
 
 modalImage.innerHTML =
@@ -959,19 +959,19 @@ productSvg(activeProduct);
 
 modalName.textContent =
 activeProduct.name +
-‘ — ‘ +
+' — ' +
 activeProduct.title;
 
 modalPrice.textContent =
-‘₹’ +
+'₹' +
 activeProduct.price
-.toLocaleString(‘en-IN’);
+.toLocaleString('en-IN');
 
 modalDesc.textContent =
 activeProduct.desc;
 
 modalStatus.textContent =
-‘SELECT A SIZE’;
+'SELECT A SIZE';
 
 modalAdd.disabled = true;
 
@@ -979,26 +979,26 @@ modalSizes.innerHTML =
 SIZES.map(size => `
 
 <button
-Class=”size-btn”
-Data-size=”${size}”>
+class="size-btn"
+data-size="${size}">
 
 ${size}
 
 </button>
 
-`).join(‘’);
+`).join('');
 
-Backdrop.classList.add(‘open’);
+backdrop.classList.add('open');
 
-Document.body.style.overflow = ‘hidden’;
+document.body.style.overflow = 'hidden';
 
 }
 
-Function closeModal() {
+function closeModal() {
 
-Backdrop.classList.remove(‘open’);
+backdrop.classList.remove('open');
 
-Document.body.style.overflow = ‘’;
+document.body.style.overflow = '';
 
 activeProduct = null;
 
@@ -1009,29 +1009,29 @@ activeSize = null;
 /* SIZE */
 
 modalSizes.addEventListener(
-‘click’,
-Function€ {
+'click',
+function(e) {
 
-Const button =
-e.target.closest(‘.size-btn’);
+const button =
+e.target.closest('.size-btn');
 
 if (!button) return;
 
 modalSizes
-.querySelectorAll(‘.size-btn’)
+.querySelectorAll('.size-btn')
 .forEach(btn => {
 
-Btn.classList.remove(‘selected’);
+btn.classList.remove('selected');
 
 });
 
-Button.classList.add(‘selected’);
+button.classList.add('selected');
 
 activeSize =
 button.dataset.size;
 
 modalStatus.textContent =
-‘SIZE ‘ + activeSize + ‘ SELECTED’;
+'SIZE ' + activeSize + ' SELECTED';
 
 modalAdd.disabled = false;
 
@@ -1040,35 +1040,35 @@ modalAdd.disabled = false;
 
 /* QUANTITY */
 
-Document
-.getElementById(‘qty-minus’)
+document
+.getElementById('qty-minus')
 .addEventListener(
-‘click’,
-Function() {
+'click',
+function() {
 
 modalQuantity =
 Math.max(
 1,
-modalQuantity – 1
+modalQuantity - 1
 );
 
-Document
-.getElementById(‘qty-value’)
+document
+.getElementById('qty-value')
 .textContent = modalQuantity;
 
 }
 );
 
-Document
-.getElementById(‘qty-plus’)
+document
+.getElementById('qty-plus')
 .addEventListener(
-‘click’,
-Function() {
+'click',
+function() {
 
 modalQuantity++;
 
 document
-.getElementById(‘qty-value’)
+.getElementById('qty-value')
 .textContent = modalQuantity;
 
 }
@@ -1077,10 +1077,10 @@ document
 /* ADD TO BAG */
 
 modalAdd.addEventListener(
-‘click’,
-Function() {
+'click',
+function() {
 
-If (
+if (
 !activeProduct ||
 !activeSize
 ) return;
@@ -1098,18 +1098,18 @@ closeModal();
 
 /* CLOSE MODAL */
 
-Document
-.getElementById(‘modal-close’)
+document
+.getElementById('modal-close')
 .addEventListener(
-‘click’,
+'click',
 closeModal
 );
 
-Backdrop.addEventListener(
-‘click’,
-Function€ {
+backdrop.addEventListener(
+'click',
+function(e) {
 
-If (e.target === backdrop) {
+if (e.target === backdrop) {
 
 closeModal();
 
@@ -1120,18 +1120,18 @@ closeModal();
 
 /* SEARCH */
 
-Const searchPanel =
-Document.getElementById(‘search-panel’);
+const searchPanel =
+document.getElementById('search-panel');
 
-Const searchInput =
-Document.getElementById(‘search-input’);
+const searchInput =
+document.getElementById('search-input');
 
-Const searchResults =
-Document.getElementById(‘search-results’);
+const searchResults =
+document.getElementById('search-results');
 
-Function openSearch() {
+function openSearch() {
 
-searchPanel.classList.add(‘open’);
+searchPanel.classList.add('open');
 
 setTimeout(function() {
 
@@ -1141,56 +1141,56 @@ searchInput.focus();
 
 }
 
-Function closeSearch() {
+function closeSearch() {
 
-searchPanel.classList.remove(‘open’);
+searchPanel.classList.remove('open');
 
-searchInput.value = ‘’;
+searchInput.value = '';
 
 searchResults.textContent =
-‘Try “denim”, “jacket”, or a product name’;
+'Try “denim”, “jacket”, or a product name';
 
 }
 
-Document
-.getElementById(‘search-trigger’)
+document
+.getElementById('search-trigger')
 .addEventListener(
-‘click’,
+'click',
 openSearch
 );
 
-Document
-.getElementById(‘search-close’)
+document
+.getElementById('search-close')
 .addEventListener(
-‘click’,
+'click',
 closeSearch
 );
 
 searchInput.addEventListener(
-‘input’,
-Function() {
+'input',
+function() {
 
-Const query =
+const query =
 searchInput.value
 .trim()
 .toLowerCase();
 
-If (!query) {
+if (!query) {
 
 searchResults.textContent =
-‘Try “denim”, “jacket”, or a product name’;
+'Try “denim”, “jacket”, or a product name';
 
-Return;
+return;
 
 }
 
-Const matches =
-Products.filter(product =>
-Product.name
+const matches =
+products.filter(product =>
+product.name
 .toLowerCase()
 .includes(query) ||
 
-Product.title
+product.title
 .toLowerCase()
 .includes(query)
 );
@@ -1200,24 +1200,24 @@ matches.length
 
 ? matches
 .map(product =>
-Product.name +
-‘ — ‘ +
-Product.title
+product.name +
+' — ' +
+product.title
 )
-.join(‘ / ‘)
+.join(' / ')
 
-: ‘NO MATCHES FOUND’;
+: 'NO MATCHES FOUND';
 
 }
 );
 
 /* HOME LOGO */
 
-Document
-.getElementById(‘home-logo’)
+document
+.getElementById('home-logo')
 .addEventListener(
-‘click’,
-Function() {
+'click',
+function() {
 
 closeModal();
 
@@ -1225,7 +1225,7 @@ closeSearch();
 
 window.scrollTo({
 top: 0,
-behavior: ‘smooth’
+behavior: 'smooth'
 });
 
 }
@@ -1233,34 +1233,34 @@ behavior: ‘smooth’
 
 /* SHOP */
 
-Document
-.getElementById(‘shop-link’)
+document
+.getElementById('shop-link')
 .addEventListener(
-‘click’,
-Function() {
+'click',
+function() {
 
-Document
-.getElementById(‘shop’)
+document
+.getElementById('shop')
 .scrollIntoView({
 
-Behavior: ‘smooth’
+behavior: 'smooth'
 
 });
 
 }
 );
 
-Document
-.getElementById(‘shop-now’)
+document
+.getElementById('shop-now')
 .addEventListener(
-‘click’,
-Function() {
+'click',
+function() {
 
-Document
-.getElementById(‘shop’)
+document
+.getElementById('shop')
 .scrollIntoView({
 
-Behavior: ‘smooth’
+behavior: 'smooth'
 
 });
 
@@ -1269,17 +1269,17 @@ Behavior: ‘smooth’
 
 /* ABOUT */
 
-Document
-.getElementById(‘about-link’)
+document
+.getElementById('about-link')
 .addEventListener(
-‘click’,
-Function() {
+'click',
+function() {
 
-Document
-.getElementById(‘about’)
+document
+.getElementById('about')
 .scrollIntoView({
 
-Behavior: ‘smooth’
+behavior: 'smooth'
 
 });
 
@@ -1288,18 +1288,18 @@ Behavior: ‘smooth’
 
 /* VIEW ALL */
 
-Document
-.getElementById(‘view-all’)
+document
+.getElementById('view-all')
 .addEventListener(
-‘click’,
-Function() {
+'click',
+function() {
 
-Document
-.getElementById(‘products’)
+document
+.getElementById('products')
 .scrollIntoView({
 
-Behavior: ‘smooth’,
-Block: ‘start’
+behavior: 'smooth',
+block: 'start'
 
 });
 
@@ -1308,11 +1308,11 @@ Block: ‘start’
 
 /* ESCAPE */
 
-Document.addEventListener(
-‘keydown’,
-Function€ {
+document.addEventListener(
+'keydown',
+function(e) {
 
-If (e.key === ‘Escape’) {
+if (e.key === 'Escape') {
 
 closeModal();
 
@@ -1327,4 +1327,3 @@ closeSearch();
 
 </body>
 </html>
-
