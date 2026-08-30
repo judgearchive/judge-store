@@ -1,477 +1,539 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>JUDGE — Official Store</title>
+<title>JUDGE — Official Store</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+  background: #fff;
+}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: #111;
-      background: #fff;
-    }
+header {
+  height: 82px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 22px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
 
-    /* HEADER */
+.logo {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
 
-    header {
-      height: 64px;
-      padding: 0 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #ddd;
-      background: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-    .left-nav,
-    .right-nav {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      width: 33%;
-    }
+.collection {
+  padding: 25px 0;
+}
 
-    .right-nav {
-      justify-content: flex-end;
-    }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 28px 20px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
 
-    .nav-link {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      cursor: pointer;
-    }
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
 
-    .logo {
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: -3px;
-      text-align: center;
-      width: 34%;
-    }
+.product {
+  cursor: pointer;
+}
 
-    /* HERO */
+.product-image {
+  width: 100%;
+  height: 650px;
+  overflow: hidden;
+  background: #eee;
+}
 
-    .hero {
-      min-height: calc(100vh - 64px);
-      background: #e8e8e8;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 35px 28px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-top {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-
-    .hero-center {
-      margin: auto;
-      text-align: center;
-    }
-
-    .hero-title {
-      font-size: clamp(80px, 17vw, 260px);
-      font-weight: 900;
-      letter-spacing: -0.09em;
-      line-height: .8;
-    }
-
-    .hero-subtitle {
-      margin-top: 28px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .shop-button {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 14px 24px;
-      background: #111;
-      color: white;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: .2s;
-    }
-
-    .shop-button:hover {
-      background: #444;
-    }
-
-    .hero-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      font-size: 11px;
-      text-transform: uppercase;
-    }
-
-    /* MARQUEE */
-
-    .marquee {
-      overflow: hidden;
-      border-bottom: 1px solid #ddd;
-      padding: 13px 0;
-      white-space: nowrap;
-    }
-
-    .marquee-text {
-      display: inline-block;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      animation: move 18s linear infinite;
-    }
-
-    @keyframes move {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* COLLECTION */
-
-    .collection {
-      padding: 80px 28px;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
-
-    .section-title {
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: normal;
-    }
-
-    .view-all {
-      font-size: 11px;
-      text-transform: uppercase;
-      border-bottom: 1px solid #111;
-      padding-bottom: 2px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .product-image {
-      aspect-ratio: 3 / 4;
-      background: #e9e9e9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: #777;
-      overflow: hidden;
-    }
-
-    .product-image img {
+.product-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.4s ease;
 }
 
-    .product-info {
-      padding: 12px 0 25px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      text-transform: uppercase;
-    }
+.product:hover img {
+  transform: scale(1.02);
+}
 
-    /* STATEMENT */
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+  font-size: 11px;
+}
 
-    .statement {
-      background: #111;
-      color: #fff;
-      min-height: 60vh;
-      display: flex;
-      align-items: center;
-      padding: 50px 28px;
-    }
+/* PRODUCT PAGE */
 
-    .statement h2 {
-      font-size: clamp(45px, 9vw, 130px);
-      line-height: .9;
-      font-weight: 800;
-      letter-spacing: -0.06em;
-      max-width: 1100px;
-    }
+.product-page {
+  display: none;
+  padding: 35px 28px;
+}
 
-    /* ABOUT */
+.back {
+  font-size: 11px;
+  cursor: pointer;
+  margin-bottom: 25px;
+  display: inline-block;
+}
 
-    .about {
-      padding: 100px 28px;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 30px;
-    }
+.product-detail {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 50px;
+}
 
-    .about-label {
-      font-size: 11px;
-      text-transform: uppercase;
-    }
+.detail-image img {
+  width: 100%;
+  max-height: 800px;
+  object-fit: cover;
+}
 
-    .about-text {
-      font-size: clamp(24px, 4vw, 55px);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      max-width: 850px;
-    }
+.detail-info {
+  padding-top: 10px;
+}
 
-    /* FOOTER */
+.detail-name {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
 
-    footer {
-      border-top: 1px solid #ddd;
-      padding: 25px 28px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 10px;
-      text-transform: uppercase;
-    }
+.detail-price {
+  font-size: 13px;
+  margin-bottom: 35px;
+}
 
-    /* MOBILE */
+.sizes {
+  display: flex;
+  gap: 8px;
+  margin: 15px 0 25px;
+}
 
-    @media (max-width: 700px) {
+.size {
+  border: 1px solid #aaa;
+  padding: 12px 16px;
+  font-size: 11px;
+  cursor: pointer;
+}
 
-      header {
-        padding: 0 16px;
-        height: 58px;
-      }
+.size.selected {
+  background: #111;
+  color: white;
+}
 
-      .left-nav {
-        width: auto;
-      }
+.add-btn {
+  width: 100%;
+  background: #111;
+  color: white;
+  border: none;
+  padding: 18px;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
 
-      .right-nav {
-        width: auto;
-      }
+.description {
+  margin-top: 30px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #555;
+}
 
-      .left-nav .nav-link:not(:first-child) {
-        display: none;
-      }
+/* BAG */
 
-      .right-nav .nav-link:first-child {
-        display: none;
-      }
+.bag-panel {
+  position: fixed;
+  top: 0;
+  right: -450px;
+  width: 420px;
+  max-width: 100%;
+  height: 100vh;
+  background: white;
+  border-left: 1px solid #ddd;
+  z-index: 10;
+  padding: 30px;
+  transition: right 0.3s ease;
+}
 
-      .logo {
-        font-size: 27px;
-        width: auto;
-      }
+.bag-panel.open {
+  right: 0;
+}
 
-      .hero {
-        min-height: calc(100vh - 58px);
-        padding: 20px 16px;
-      }
+.bag-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
 
-      .hero-title {
-        font-size: 24vw;
-      }
+.bag-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
 
-      .collection {
-        padding: 60px 16px;
-      }
+.bag-item img {
+  width: 90px;
+  height: 110px;
+  object-fit: cover;
+}
 
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-      }
+.remove {
+  font-size: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+  display: inline-block;
+  text-decoration: underline;
+}
 
-      .products .product:last-child {
-        grid-column: span 2;
-      }
+.checkout {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  background: #111;
+  color: white;
+  border: none;
+  padding: 18px;
+  cursor: pointer;
+}
 
-      .statement {
-        padding: 40px 16px;
-        min-height: 45vh;
-      }
+@media (max-width: 700px) {
 
-      .about {
-        padding: 70px 16px;
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
+  header {
+    padding: 0 15px;
+  }
 
-      footer {
-        padding: 20px 16px;
-      }
-    }
-  </style>
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    height: 600px;
+  }
+
+  .product-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .product-page {
+    padding: 20px 15px;
+  }
+
+  .logo {
+    font-size: 27px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-
-    <div class="left-nav">
-      <a href="#shop" class="nav-link">Shop</a>
-      <a href="#about" class="nav-link">About</a>
-    </div>
-
-    <a href="#" class="logo">JUDGE</a>
-
-    <div class="right-nav">
-      <span class="nav-link">Search</span>
-      <span class="nav-link">Bag (0)</span>
-    </div>
-
-  </header>
-
-
-  <main>
-
-    <section class="hero">
-
-      <div class="hero-top">
-        <span>JUDGE®</span>
-        <span>EST. 2026</span>
-      </div>
-
-      <div class="hero-center">
-        <h1 class="hero-title">JUDGE</h1>
-
-        <p class="hero-subtitle">
-          Independent Denim / Pune, India
-        </p>
-
-        <a href="#shop" class="shop-button">
-          Shop Collection
-        </a>
-      </div>
-
-      <div class="hero-bottom">
-        <span>Scroll to explore ↓</span>
-        <span>Drop 001</span>
-      </div>
-
-    </section>
-
-
-    <section class="marquee">
-      <div class="marquee-text">
-        JUDGE — DENIM WITHOUT PERMISSION — DROP 001 —
-        JUDGE — DENIM WITHOUT PERMISSION — DROP 001 —
-        JUDGE — DENIM WITHOUT PERMISSION — DROP 001 —
-        JUDGE — DENIM WITHOUT PERMISSION — DROP 001 —
-      </div>
-    </section>
-
-
- <section class="collection" id="shop">
-  <div class="section-head">
-    <h2 class="section-title">Drop 001 / New Arrivals</h2>
-    <span class="view-all">View All</span>
+<header>
+  <div class="nav-left">
+    <a>SHOP</a>
+    <a>ABOUT</a>
   </div>
 
-  <div class="products">
+  <div class="logo">JUDGE</div>
 
-    <!-- PRODUCT 001 -->
-    <article class="product">
-      <div class="product-image">
-        <img src="judge-001-front.jpeg" alt="JUDGE Black Wide-Leg Denim">
-      </div>
-
-      <div class="product-info">
-        <span>JUDGE / 001</span>
-        <span>₹2,499</span>
-      </div>
-    </article>
-
-
-    <!-- PRODUCT 002 -->
-    <article class="product">
-      <div class="product-image">
-        <img src="judge-002-front.jpeg" alt="JUDGE Brown Wide-Leg Denim">
-      </div>
-
-      <div class="product-info">
-        <span>JUDGE / 002</span>
-        <span>₹2,799</span>
-      </div>
-    </article>
-
-
-    <!-- PRODUCT 003 -->
-    <article class="product">
-      <div class="product-image">
-        <img src="judge-003-front.jpeg" alt="JUDGE Wide-Leg Denim">
-      </div>
-
-      <div class="product-info">
-        <span>JUDGE / 003</span>
-        <span>₹2,799</span>
-      </div>
-    </article>
-
+  <div class="nav-right">
+    <a>SEARCH</a>
+    <a onclick="openBag()">BAG (<span id="bag-count">0</span>)</a>
   </div>
+</header>
+
+
+<!-- SHOP -->
+
+<div id="shop-page">
+
+<section class="collection">
+
+<div class="section-head">
+  <span>DROP 001 / NEW ARRIVALS</span>
+  <span>VIEW ALL</span>
+</div>
+
+<div class="products">
+
+  <article class="product" onclick="openProduct(0)">
+    <div class="product-image">
+      <img src="judge-001-front.jpeg">
+    </div>
+    <div class="product-info">
+      <span>₹2,499 &nbsp; JUDGE / 001</span>
+    </div>
+  </article>
+
+  <article class="product" onclick="openProduct(1)">
+    <div class="product-image">
+      <img src="judge-002-front.jpeg">
+    </div>
+    <div class="product-info">
+      <span>₹2,799 &nbsp; JUDGE / 002</span>
+    </div>
+  </article>
+
+  <article class="product" onclick="openProduct(2)">
+    <div class="product-image">
+      <img src="judge-003-front.jpeg">
+    </div>
+    <div class="product-info">
+      <span>₹2,799 &nbsp; JUDGE / 003</span>
+    </div>
+  </article>
+
+</div>
+
 </section>
+</div>
 
 
-    <section class="statement">
-      <h2>
-        DENIM<br>
-        WITHOUT<br>
-        PERMISSION.
-      </h2>
-    </section>
+<!-- PRODUCT DETAIL -->
+
+<div id="product-page" class="product-page">
+
+<div class="back" onclick="goBack()">← BACK TO SHOP</div>
+
+<div class="product-detail">
+
+  <div class="detail-image">
+    <img id="detail-img">
+  </div>
+
+  <div class="detail-info">
+
+    <div class="detail-name" id="detail-name"></div>
+
+    <div class="detail-price" id="detail-price"></div>
+
+    <div style="font-size:11px;">SELECT SIZE</div>
+
+    <div class="sizes">
+      <div class="size" onclick="selectSize(this)">S</div>
+      <div class="size" onclick="selectSize(this)">M</div>
+      <div class="size" onclick="selectSize(this)">L</div>
+      <div class="size" onclick="selectSize(this)">XL</div>
+    </div>
+
+    <button class="add-btn" onclick="addToBag()">ADD TO BAG</button>
+
+    <div class="description">
+      Wide-leg denim.<br>
+      Relaxed fit.<br>
+      JUDGE DROP 001.
+    </div>
+
+  </div>
+
+</div>
+</div>
 
 
-    <section class="about" id="about">
+<!-- BAG -->
 
-      <div class="about-label">
-        About JUDGE
+<div id="bag" class="bag-panel">
+
+<div class="bag-header">
+  <strong>BAG</strong>
+  <span style="cursor:pointer" onclick="closeBag()">×</span>
+</div>
+
+<div id="bag-items"></div>
+
+<button class="checkout">CHECKOUT</button>
+
+</div>
+
+
+<script>
+
+const products = [
+
+  {
+    name: "JUDGE / 001",
+    price: "₹2,499",
+    image: "judge-001-front.jpeg"
+  },
+
+  {
+    name: "JUDGE / 002",
+    price: "₹2,799",
+    image: "judge-002-front.jpeg"
+  },
+
+  {
+    name: "JUDGE / 003",
+    price: "₹2,799",
+    image: "judge-003-front.jpeg"
+  }
+
+];
+
+let currentProduct = null;
+let selectedSize = null;
+let bag = [];
+
+
+function openProduct(index) {
+
+  currentProduct = products[index];
+
+  document.getElementById("shop-page").style.display = "none";
+  document.getElementById("product-page").style.display = "block";
+
+  document.getElementById("detail-img").src = currentProduct.image;
+  document.getElementById("detail-name").innerText = currentProduct.name;
+  document.getElementById("detail-price").innerText = currentProduct.price;
+
+  selectedSize = null;
+
+  document.querySelectorAll(".size").forEach(size => {
+    size.classList.remove("selected");
+  });
+
+  window.scrollTo(0, 0);
+}
+
+
+function goBack() {
+
+  document.getElementById("product-page").style.display = "none";
+  document.getElementById("shop-page").style.display = "block";
+
+}
+
+
+function selectSize(element) {
+
+  document.querySelectorAll(".size").forEach(size => {
+    size.classList.remove("selected");
+  });
+
+  element.classList.add("selected");
+
+  selectedSize = element.innerText;
+
+}
+
+
+function addToBag() {
+
+  if (!selectedSize) {
+    alert("SELECT A SIZE");
+    return;
+  }
+
+  bag.push({
+    ...currentProduct,
+    size: selectedSize
+  });
+
+  updateBag();
+
+  openBag();
+
+}
+
+
+function updateBag() {
+
+  document.getElementById("bag-count").innerText = bag.length;
+
+  const bagItems = document.getElementById("bag-items");
+
+  bagItems.innerHTML = "";
+
+  bag.forEach((item, index) => {
+
+    bagItems.innerHTML += `
+
+      <div class="bag-item">
+
+        <img src="${item.image}">
+
+        <div>
+
+          <div style="font-size:12px">${item.name}</div>
+
+          <div style="font-size:11px; margin-top:5px">
+            ${item.price}
+          </div>
+
+          <div style="font-size:11px; margin-top:5px">
+            SIZE ${item.size}
+          </div>
+
+          <span class="remove" onclick="removeItem(${index})">
+            REMOVE
+          </span>
+
+        </div>
+
       </div>
 
-      <div class="about-text">
-        JUDGE is an independent clothing project focused on denim, experimentation and pieces made to stand out.
-      </div>
+    `;
 
-    </section>
+  });
 
-  </main>
+}
 
 
-  <footer>
-    <span>© 2026 JUDGE</span>
-    <span>INDIA</span>
-    <span>ALL RIGHTS RESERVED</span>
-  </footer>
+function removeItem(index) {
+
+  bag.splice(index, 1);
+
+  updateBag();
+
+}
+
+
+function openBag() {
+
+  document.getElementById("bag").classList.add("open");
+
+}
+
+
+function closeBag() {
+
+  document.getElementById("bag").classList.remove("open");
+
+}
+
+</script>
 
 </body>
 </html>
