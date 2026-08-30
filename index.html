@@ -7,7 +7,6 @@
 <title>JUDGE — Official Store</title>
 
 <style>
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -33,6 +32,12 @@ button {
   cursor: pointer;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* HEADER */
 
 header {
@@ -42,9 +47,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
-  position: relative;
-  background: white;
-  z-index: 20;
+  background: #fff;
 }
 
 .nav-left,
@@ -61,44 +64,68 @@ header {
   font-weight: 900;
   letter-spacing: -2px;
   cursor: pointer;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
+/* HOME INTRO */
+
+.home-intro {
+  padding: 90px 28px 65px;
+  border-bottom: 1px solid #ddd;
 }
 
+.drop-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.home-intro h1 {
+  font-size: clamp(42px, 7vw, 100px);
+  font-weight: 900;
+  letter-spacing: -5px;
+  line-height: 0.9;
+  margin-bottom: 25px;
+}
+
+.home-intro p {
+  font-size: 12px;
+  max-width: 420px;
+  line-height: 1.7;
+  color: #555;
+}
 
 /* SHOP */
 
 .collection {
-  padding: 120px 0 25px;
+  padding: 28px 0 80px;
 }
 
 .section-head {
   display: flex;
   justify-content: space-between;
-  padding: 0 28px 20px;
+  align-items: center;
+  padding: 0 28px 22px;
   font-size: 12px;
   letter-spacing: 0.5px;
 }
 
 .view-all {
   cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 11px;
 }
 
 .products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+  padding: 0 12px;
 }
 
 .product {
   cursor: pointer;
+  position: relative;
 }
 
 .product-image {
@@ -120,28 +147,82 @@ a {
   transform: scale(1.02);
 }
 
+/* HEART */
+
+.heart-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 22px;
+  z-index: 3;
+}
+
+.heart-btn.active {
+  color: red;
+  border-color: red;
+}
+
 .product-info {
-  padding: 10px 5px 20px;
+  padding: 12px 4px 20px;
   font-size: 11px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-.heart {
-  color: red;
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
+/* WAITLIST */
+
+.waitlist {
+  border-top: 1px solid #ddd;
+  padding: 100px 28px;
+  text-align: center;
 }
 
+.waitlist h2 {
+  font-size: clamp(32px, 5vw, 70px);
+  letter-spacing: -3px;
+  margin-bottom: 15px;
+}
+
+.waitlist p {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.waitlist-form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+}
+
+.waitlist-form input {
+  flex: 1;
+  border: 1px solid #111;
+  padding: 16px;
+  outline: none;
+  font-size: 11px;
+}
+
+.waitlist-form button {
+  border: 1px solid #111;
+  background: #111;
+  color: white;
+  padding: 0 25px;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
 
 /* PRODUCT PAGE */
 
 .product-page,
 .about-page,
 .checkout-page,
-.search-page {
+.search-page,
+.all-products-page {
   display: none;
   padding: 35px 28px;
 }
@@ -157,10 +238,6 @@ a {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 50px;
-}
-
-.detail-gallery {
-  width: 100%;
 }
 
 .detail-main-image {
@@ -200,9 +277,6 @@ a {
   object-fit: cover;
 }
 
-
-/* PRODUCT INFO */
-
 .detail-info {
   padding-top: 10px;
 }
@@ -233,8 +307,6 @@ a {
   padding: 12px 16px;
   font-size: 11px;
   cursor: pointer;
-  min-width: 70px;
-  text-align: center;
 }
 
 .size.selected {
@@ -242,20 +314,17 @@ a {
   color: white;
 }
 
-
-/* QUANTITY */
-
 .quantity {
   display: flex;
   align-items: center;
-  width: 180px;
+  width: 150px;
   border: 1px solid #aaa;
   margin: 15px 0 25px;
 }
 
 .quantity button {
-  width: 55px;
-  height: 45px;
+  width: 48px;
+  height: 44px;
   border: none;
   background: white;
   font-size: 20px;
@@ -265,15 +334,11 @@ a {
   flex: 1;
   text-align: center;
   font-size: 12px;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.add-btn {
+.add-btn,
+.checkout,
+.place-order {
   width: 100%;
   background: #111;
   color: white;
@@ -290,26 +355,22 @@ a {
   color: #555;
 }
 
-
-/* BAG OVERLAY */
+/* BAG */
 
 .bag-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.18);
+  background: rgba(0,0,0,0.15);
   opacity: 0;
   visibility: hidden;
-  transition: 0.3s ease;
-  z-index: 90;
+  transition: 0.3s;
+  z-index: 99;
 }
 
 .bag-overlay.open {
   opacity: 1;
   visibility: visible;
 }
-
-
-/* BAG PANEL */
 
 .bag-panel {
   position: fixed;
@@ -334,12 +395,7 @@ a {
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
-  font-size: 13px;
-}
-
-.bag-close {
-  cursor: pointer;
-  font-size: 20px;
+  font-size: 12px;
 }
 
 .bag-item {
@@ -365,7 +421,7 @@ a {
 .bag-product-price,
 .bag-product-size {
   font-size: 11px;
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
 .bag-quantity {
@@ -404,21 +460,10 @@ a {
   margin-bottom: 15px;
 }
 
-.checkout {
-  width: 100%;
-  background: #111;
-  color: white;
-  border: none;
-  padding: 18px;
-  font-size: 11px;
-  letter-spacing: 1px;
-}
-
 .empty-bag {
   font-size: 11px;
   color: #777;
 }
-
 
 /* SEARCH */
 
@@ -427,14 +472,8 @@ a {
   border: none;
   border-bottom: 1px solid #111;
   padding: 15px 0;
-  font-size: 24px;
+  font-size: 28px;
   outline: none;
-  margin-bottom: 15px;
-}
-
-.search-hint {
-  font-size: 11px;
-  color: #777;
   margin-bottom: 30px;
 }
 
@@ -443,7 +482,6 @@ a {
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
-
 
 /* ABOUT */
 
@@ -454,71 +492,13 @@ a {
 }
 
 .about-content h1 {
-  font-size: 22px;
+  font-size: 24px;
   margin-bottom: 25px;
 }
 
 .about-content p {
   margin-bottom: 20px;
 }
-
-
-/* WAITLIST */
-
-.waitlist-section {
-  margin-top: 100px;
-  border-top: 1px solid #ddd;
-  padding: 80px 28px;
-  display: flex;
-  justify-content: space-between;
-  gap: 50px;
-}
-
-.waitlist-left {
-  max-width: 450px;
-}
-
-.waitlist-title {
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-
-.waitlist-text {
-  font-size: 12px;
-  line-height: 1.7;
-  color: #555;
-}
-
-.waitlist-form {
-  width: 420px;
-  max-width: 100%;
-}
-
-.waitlist-input {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #111;
-  padding: 15px 0;
-  outline: none;
-  margin-bottom: 15px;
-  font-size: 13px;
-}
-
-.waitlist-btn {
-  width: 100%;
-  background: #111;
-  color: white;
-  border: none;
-  padding: 18px;
-  font-size: 11px;
-  letter-spacing: 1px;
-}
-
-.waitlist-message {
-  font-size: 11px;
-  margin-top: 15px;
-}
-
 
 /* CHECKOUT */
 
@@ -546,7 +526,6 @@ a {
 
 .checkout-form textarea {
   min-height: 100px;
-  resize: vertical;
 }
 
 .checkout-summary {
@@ -554,17 +533,6 @@ a {
   border-top: 1px solid #ddd;
   padding-top: 20px;
 }
-
-.place-order {
-  width: 100%;
-  background: #111;
-  color: white;
-  border: none;
-  padding: 18px;
-  font-size: 11px;
-  letter-spacing: 1px;
-}
-
 
 /* MOBILE */
 
@@ -585,13 +553,18 @@ a {
     font-size: 27px;
   }
 
-  .collection {
-    padding-top: 70px;
+  .home-intro {
+    padding: 70px 15px 50px;
+  }
+
+  .section-head {
+    padding: 0 15px 20px;
   }
 
   .products,
   .search-results {
     grid-template-columns: 1fr;
+    padding: 0;
   }
 
   .product-image {
@@ -610,7 +583,8 @@ a {
   .product-page,
   .about-page,
   .checkout-page,
-  .search-page {
+  .search-page,
+  .all-products-page {
     padding: 20px 15px;
   }
 
@@ -619,20 +593,25 @@ a {
     right: -105%;
   }
 
-  .waitlist-section {
-    margin-top: 60px;
-    padding: 50px 15px;
-    flex-direction: column;
-    gap: 35px;
+  .waitlist {
+    padding: 70px 15px;
   }
 
+  .waitlist-form {
+    flex-direction: column;
+  }
+
+  .waitlist-form input,
+  .waitlist-form button {
+    width: 100%;
+    min-height: 52px;
+  }
 }
 
 </style>
 </head>
 
 <body>
-
 
 <header>
 
@@ -651,91 +630,64 @@ a {
 </header>
 
 
-<!-- SHOP -->
+<!-- HOME -->
 
 <div id="shop-page">
+
+  <section class="home-intro">
+    <div class="drop-label">JUDGE DROP 001</div>
+    <h1>JUDGE</h1>
+    <p>DROP 001 / COMING SOON<br>INDEPENDENT CLOTHING EST. 2026</p>
+  </section>
 
   <section class="collection">
 
     <div class="section-head">
       <span>DROP 001 / NEW ARRIVALS</span>
-      <span class="view-all" onclick="viewAll()">VIEW ALL</span>
+      <button class="view-all" onclick="showAllProducts()">VIEW ALL</button>
     </div>
 
-    <div class="products" id="products">
-
-      <article class="product" onclick="openProduct(0)">
-        <div class="product-image">
-          <img src="judge-001-front.jpeg" alt="JUDGE 001">
-        </div>
-
-        <div class="product-info">
-          <span>₹2,499 &nbsp; JUDGE / 001</span>
-          <span class="heart" onclick="event.stopPropagation()">♡</span>
-        </div>
-      </article>
-
-
-      <article class="product" onclick="openProduct(1)">
-        <div class="product-image">
-          <img src="judge-002-front.jpeg" alt="JUDGE 002">
-        </div>
-
-        <div class="product-info">
-          <span>₹2,799 &nbsp; JUDGE / 002</span>
-          <span class="heart" onclick="event.stopPropagation()">♡</span>
-        </div>
-      </article>
-
-
-      <article class="product" onclick="openProduct(2)">
-        <div class="product-image">
-          <img src="judge-003-front.jpeg" alt="JUDGE 003">
-        </div>
-
-        <div class="product-info">
-          <span>₹2,799 &nbsp; JUDGE / 003</span>
-          <span class="heart" onclick="event.stopPropagation()">♡</span>
-        </div>
-      </article>
-
-    </div>
+    <div class="products" id="products"></div>
 
   </section>
 
 
-  <!-- WAITLIST -->
+  <!-- WAITLIST AT THE END -->
 
-  <section class="waitlist-section">
+  <section class="waitlist">
 
-    <div class="waitlist-left">
+    <h2>DROP SOON.</h2>
 
-      <h2 class="waitlist-title">DROP 001 / COMING SOON</h2>
+    <p>
+      Join the waitlist for early access to JUDGE DROP 001.
+    </p>
 
-      <p class="waitlist-text">
-        Join the waitlist for early access and updates on the first JUDGE drop.
-      </p>
-
-    </div>
-
-    <div class="waitlist-form">
-
+    <form class="waitlist-form" onsubmit="joinWaitlist(event)">
       <input
         type="email"
         id="waitlist-email"
-        class="waitlist-input"
-        placeholder="ENTER YOUR EMAIL"
+        placeholder="YOUR EMAIL"
+        required
       >
-
-      <button class="waitlist-btn" onclick="joinWaitlist()">
-        JOIN WAITLIST
-      </button>
-
-      <div id="waitlist-message" class="waitlist-message"></div>
-
-    </div>
+      <button type="submit">JOIN WAITLIST</button>
+    </form>
 
   </section>
+
+</div>
+
+
+<!-- ALL PRODUCTS -->
+
+<div id="all-products-page" class="all-products-page">
+
+  <div class="back" onclick="showShop()">← BACK TO SHOP</div>
+
+  <div class="section-head" style="padding:0 0 25px;">
+    <span>ALL PRODUCTS / DROP 001</span>
+  </div>
+
+  <div class="products" id="all-products"></div>
 
 </div>
 
@@ -751,13 +703,12 @@ a {
     <div class="detail-gallery">
 
       <div class="detail-main-image">
-        <img id="detail-img" alt="">
+        <img id="detail-img" src="">
       </div>
 
       <div class="thumbnails" id="thumbnails"></div>
 
     </div>
-
 
     <div class="detail-info">
 
@@ -768,32 +719,23 @@ a {
       <div class="label">SELECT SIZE</div>
 
       <div class="sizes">
-
         <div class="size" onclick="selectSize(this)">S</div>
         <div class="size" onclick="selectSize(this)">M</div>
         <div class="size" onclick="selectSize(this)">L</div>
         <div class="size" onclick="selectSize(this)">XL</div>
-
       </div>
-
 
       <div class="label">QUANTITY</div>
 
       <div class="quantity">
-
         <button onclick="changeProductQuantity(-1)">−</button>
-
         <span id="product-quantity">1</span>
-
         <button onclick="changeProductQuantity(1)">+</button>
-
       </div>
-
 
       <button class="add-btn" onclick="addToBag()">
         ADD TO BAG
       </button>
-
 
       <div class="description" id="detail-description"></div>
 
@@ -816,10 +758,6 @@ a {
     placeholder="SEARCH"
     oninput="searchProducts()"
   >
-
-  <div class="search-hint">
-    TRY "001", "002", "003" OR "JUDGE"
-  </div>
 
   <div class="search-results" id="search-results"></div>
 
@@ -873,9 +811,7 @@ a {
       <input placeholder="FULL NAME">
       <input placeholder="EMAIL">
       <input placeholder="PHONE NUMBER">
-
       <textarea placeholder="FULL DELIVERY ADDRESS"></textarea>
-
       <input placeholder="CITY">
       <input placeholder="STATE">
       <input placeholder="PIN CODE">
@@ -891,7 +827,7 @@ a {
 </div>
 
 
-<!-- BAG OVERLAY -->
+<!-- BAG -->
 
 <div
   id="bag-overlay"
@@ -899,37 +835,20 @@ a {
   onclick="closeBag()">
 </div>
 
-
-<!-- BAG -->
-
 <div id="bag" class="bag-panel">
 
   <div class="bag-header">
-
     <strong>BAG</strong>
-
-    <span class="bag-close" onclick="closeBag()">×</span>
-
+    <span style="cursor:pointer" onclick="closeBag()">×</span>
   </div>
 
-
-  <div id="bag-items">
-
-    <div class="empty-bag">
-      YOUR BAG IS EMPTY.
-    </div>
-
-  </div>
-
+  <div id="bag-items"></div>
 
   <div class="bag-bottom">
 
     <div class="subtotal">
-
       <span>SUBTOTAL</span>
-
       <span id="subtotal">₹0</span>
-
     </div>
 
     <button class="checkout" onclick="showCheckout()">
@@ -943,70 +862,120 @@ a {
 
 <script>
 
-
 const products = [
 
   {
     name: "JUDGE / 001",
     price: 2499,
-    images: [
-      "judge-001-front.jpeg"
-    ],
-    description:
-      "Wide-leg denim.<br>Relaxed fit.<br>JUDGE DROP 001."
+    images: ["judge-001-front.jpeg"],
+    description: "Wide-leg denim.<br>Relaxed fit.<br>JUDGE DROP 001."
   },
 
   {
     name: "JUDGE / 002",
     price: 2799,
-    images: [
-      "judge-002-front.jpeg"
-    ],
-    description:
-      "Relaxed denim silhouette.<br>Designed for everyday wear.<br>JUDGE DROP 001."
+    images: ["judge-002-front.jpeg"],
+    description: "Relaxed denim silhouette.<br>Designed for everyday wear.<br>JUDGE DROP 001."
   },
 
   {
     name: "JUDGE / 003",
     price: 2799,
-    images: [
-      "judge-003-front.jpeg"
-    ],
-    description:
-      "Wide-leg fit.<br>Relaxed silhouette.<br>JUDGE DROP 001."
+    images: ["judge-003-front.jpeg"],
+    description: "Wide-leg fit.<br>Relaxed silhouette.<br>JUDGE DROP 001."
   }
 
 ];
-
 
 let currentProduct = null;
 let selectedSize = null;
 let productQuantity = 1;
 let bag = [];
+let likedProducts = [];
 
-
-/* PRICE */
 
 function formatPrice(price) {
-
   return "₹" + price.toLocaleString("en-IN");
+}
+
+
+/* RENDER PRODUCTS */
+
+function renderProducts(containerId) {
+
+  const container = document.getElementById(containerId);
+
+  container.innerHTML = "";
+
+  products.forEach(function(product, index) {
+
+    const liked = likedProducts.includes(index);
+
+    container.innerHTML += `
+
+      <article class="product" onclick="openProduct(${index})">
+
+        <button
+          class="heart-btn ${liked ? "active" : ""}"
+          onclick="toggleHeart(event, ${index})"
+        >
+          ♥
+        </button>
+
+        <div class="product-image">
+          <img src="${product.images[0]}" alt="${product.name}">
+        </div>
+
+        <div class="product-info">
+          <span>${formatPrice(product.price)}</span>
+          <span>${product.name}</span>
+        </div>
+
+      </article>
+
+    `;
+
+  });
 
 }
 
 
-/* PAGE CONTROL */
+/* HEART */
+
+function toggleHeart(event, index) {
+
+  event.stopPropagation();
+
+  const position = likedProducts.indexOf(index);
+
+  if (position > -1) {
+    likedProducts.splice(position, 1);
+  } else {
+    likedProducts.push(index);
+  }
+
+  renderProducts("products");
+
+  if (
+    document.getElementById("all-products-page")
+      .style.display === "block"
+  ) {
+    renderProducts("all-products");
+  }
+
+}
+
+
+/* PAGE NAVIGATION */
 
 function hideAllPages() {
 
   document.getElementById("shop-page").style.display = "none";
-
   document.getElementById("product-page").style.display = "none";
-
   document.getElementById("about-page").style.display = "none";
-
   document.getElementById("search-page").style.display = "none";
-
   document.getElementById("checkout-page").style.display = "none";
+  document.getElementById("all-products-page").style.display = "none";
 
 }
 
@@ -1019,10 +988,20 @@ function showShop() {
 
   closeBag();
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  window.scrollTo(0, 0);
+
+}
+
+
+function showAllProducts() {
+
+  hideAllPages();
+
+  document.getElementById("all-products-page").style.display = "block";
+
+  renderProducts("all-products");
+
+  window.scrollTo(0, 0);
 
 }
 
@@ -1049,26 +1028,13 @@ function showSearch() {
   closeBag();
 
   document.getElementById("search-input").value = "";
-
   document.getElementById("search-results").innerHTML = "";
 
   window.scrollTo(0, 0);
 
   setTimeout(function() {
-
     document.getElementById("search-input").focus();
-
   }, 100);
-
-}
-
-
-function viewAll() {
-
-  document.getElementById("products").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
 
 }
 
@@ -1084,30 +1050,23 @@ function openProduct(index) {
   document.getElementById("product-page").style.display = "block";
 
   selectedSize = null;
-
   productQuantity = 1;
 
-  document.getElementById("product-quantity").innerText = 1;
-
+  document.getElementById("product-quantity").innerText =
+    productQuantity;
 
   document.querySelectorAll(".size").forEach(function(size) {
-
     size.classList.remove("selected");
-
   });
-
 
   document.getElementById("detail-name").innerText =
     currentProduct.name;
 
-
   document.getElementById("detail-price").innerText =
     formatPrice(currentProduct.price);
 
-
   document.getElementById("detail-description").innerHTML =
     currentProduct.description;
-
 
   showProductImage(0);
 
@@ -1121,35 +1080,26 @@ function showProductImage(index) {
   document.getElementById("detail-img").src =
     currentProduct.images[index];
 
-
   const thumbnails =
     document.getElementById("thumbnails");
 
-
   thumbnails.innerHTML = "";
-
 
   currentProduct.images.forEach(function(image, imageIndex) {
 
     const thumbnail =
       document.createElement("div");
 
-
     thumbnail.className =
       "thumbnail" +
       (imageIndex === index ? " active" : "");
 
-
     thumbnail.onclick = function() {
-
       showProductImage(imageIndex);
-
     };
 
-
     thumbnail.innerHTML =
-      '<img src="' + image + '">';
-
+      `<img src="${image}">`;
 
     thumbnails.appendChild(thumbnail);
 
@@ -1158,16 +1108,11 @@ function showProductImage(index) {
 }
 
 
-/* SIZE */
-
 function selectSize(element) {
 
   document.querySelectorAll(".size").forEach(function(size) {
-
     size.classList.remove("selected");
-
   });
-
 
   element.classList.add("selected");
 
@@ -1176,19 +1121,13 @@ function selectSize(element) {
 }
 
 
-/* PRODUCT QUANTITY */
-
 function changeProductQuantity(change) {
 
   productQuantity += change;
 
-
   if (productQuantity < 1) {
-
     productQuantity = 1;
-
   }
-
 
   document.getElementById("product-quantity").innerText =
     productQuantity;
@@ -1196,28 +1135,21 @@ function changeProductQuantity(change) {
 }
 
 
-/* ADD TO BAG */
+/* BAG */
 
 function addToBag() {
 
   if (!selectedSize) {
-
     alert("SELECT A SIZE");
-
     return;
-
   }
 
-
   const existingItem = bag.find(function(item) {
-
     return (
       item.name === currentProduct.name &&
       item.size === selectedSize
     );
-
   });
-
 
   if (existingItem) {
 
@@ -1226,21 +1158,14 @@ function addToBag() {
   } else {
 
     bag.push({
-
       name: currentProduct.name,
-
       price: currentProduct.price,
-
       image: currentProduct.images[0],
-
       size: selectedSize,
-
       quantity: productQuantity
-
     });
 
   }
-
 
   updateBag();
 
@@ -1249,32 +1174,24 @@ function addToBag() {
 }
 
 
-/* BAG */
-
 function updateBag() {
 
   const totalItems = bag.reduce(function(total, item) {
-
     return total + item.quantity;
-
   }, 0);
-
 
   document.getElementById("bag-count").innerText =
     totalItems;
 
-
   const bagItems =
     document.getElementById("bag-items");
 
-
   bagItems.innerHTML = "";
-
 
   if (bag.length === 0) {
 
     bagItems.innerHTML =
-      '<div class="empty-bag">YOUR BAG IS EMPTY.</div>';
+      `<div class="empty-bag">YOUR BAG IS EMPTY.</div>`;
 
   } else {
 
@@ -1331,13 +1248,9 @@ function updateBag() {
 
   }
 
-
   const subtotal = bag.reduce(function(total, item) {
-
     return total + (item.price * item.quantity);
-
   }, 0);
-
 
   document.getElementById("subtotal").innerText =
     formatPrice(subtotal);
@@ -1349,13 +1262,9 @@ function changeBagQuantity(index, change) {
 
   bag[index].quantity += change;
 
-
   if (bag[index].quantity < 1) {
-
     bag.splice(index, 1);
-
   }
-
 
   updateBag();
 
@@ -1373,24 +1282,18 @@ function removeItem(index) {
 
 function openBag() {
 
-  document.getElementById("bag")
-    .classList.add("open");
+  document.getElementById("bag").classList.add("open");
 
-
-  document.getElementById("bag-overlay")
-    .classList.add("open");
+  document.getElementById("bag-overlay").classList.add("open");
 
 }
 
 
 function closeBag() {
 
-  document.getElementById("bag")
-    .classList.remove("open");
+  document.getElementById("bag").classList.remove("open");
 
-
-  document.getElementById("bag-overlay")
-    .classList.remove("open");
+  document.getElementById("bag-overlay").classList.remove("open");
 
 }
 
@@ -1405,50 +1308,39 @@ function searchProducts() {
       .toLowerCase()
       .trim();
 
-
   const results =
     document.getElementById("search-results");
 
-
   results.innerHTML = "";
 
-
-  if (!query) {
-
-    return;
-
-  }
-
+  if (!query) return;
 
   products.forEach(function(product, index) {
 
     if (
-      product.name.toLowerCase().includes(query) ||
-      product.name.replace("/", "").toLowerCase().includes(query)
+      product.name.toLowerCase().includes(query)
     ) {
 
       results.innerHTML += `
 
-        <article
-          class="product"
-          onclick="openProduct(${index})"
-        >
+        <article class="product" onclick="openProduct(${index})">
+
+          <button
+            class="heart-btn ${
+              likedProducts.includes(index) ? "active" : ""
+            }"
+            onclick="toggleHeart(event, ${index})"
+          >
+            ♥
+          </button>
 
           <div class="product-image">
-
             <img src="${product.images[0]}">
-
           </div>
 
           <div class="product-info">
-
-            <span>
-              ${formatPrice(product.price)}
-              &nbsp; ${product.name}
-            </span>
-
-            <span class="heart">♡</span>
-
+            <span>${formatPrice(product.price)}</span>
+            <span>${product.name}</span>
           </div>
 
         </article>
@@ -1459,14 +1351,6 @@ function searchProducts() {
 
   });
 
-
-  if (results.innerHTML === "") {
-
-    results.innerHTML =
-      '<div style="font-size:11px;">NO PRODUCTS FOUND.</div>';
-
-  }
-
 }
 
 
@@ -1475,13 +1359,9 @@ function searchProducts() {
 function showCheckout() {
 
   if (bag.length === 0) {
-
     alert("YOUR BAG IS EMPTY");
-
     return;
-
   }
-
 
   closeBag();
 
@@ -1490,48 +1370,31 @@ function showCheckout() {
   document.getElementById("checkout-page").style.display =
     "block";
 
-
   const summary =
     document.getElementById("checkout-summary");
 
-
   let total = 0;
-
 
   summary.innerHTML =
     "<div class='label'>ORDER SUMMARY</div><br>";
-
 
   bag.forEach(function(item) {
 
     const itemTotal =
       item.price * item.quantity;
 
-
     total += itemTotal;
 
-
     summary.innerHTML += `
-
       <div class="subtotal">
-
-        <span>
-          ${item.name} × ${item.quantity}
-        </span>
-
-        <span>
-          ${formatPrice(itemTotal)}
-        </span>
-
+        <span>${item.name} × ${item.quantity}</span>
+        <span>${formatPrice(itemTotal)}</span>
       </div>
-
     `;
 
   });
 
-
   summary.innerHTML += `
-
     <div
       class="subtotal"
       style="
@@ -1540,15 +1403,10 @@ function showCheckout() {
         margin-top:15px
       "
     >
-
       <strong>TOTAL</strong>
-
       <strong>${formatPrice(total)}</strong>
-
     </div>
-
   `;
-
 
   window.scrollTo(0, 0);
 
@@ -1564,28 +1422,14 @@ function placeOrder() {
 
 /* WAITLIST */
 
-function joinWaitlist() {
+function joinWaitlist(event) {
+
+  event.preventDefault();
 
   const email =
-    document.getElementById("waitlist-email").value.trim();
+    document.getElementById("waitlist-email").value;
 
-
-  const message =
-    document.getElementById("waitlist-message");
-
-
-  if (!email || !email.includes("@")) {
-
-    message.innerText =
-      "ENTER A VALID EMAIL ADDRESS.";
-
-    return;
-
-  }
-
-
-  message.innerText =
-    "YOU'RE ON THE LIST. SEE YOU AT DROP 001.";
+  alert("YOU'RE ON THE LIST: " + email);
 
   document.getElementById("waitlist-email").value = "";
 
@@ -1594,8 +1438,8 @@ function joinWaitlist() {
 
 /* START */
 
+renderProducts("products");
 updateBag();
-
 
 </script>
 
