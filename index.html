@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>JUDGE — Denim</title>
+  <title>JUDGE — Official Store</title>
 
   <style>
     * {
@@ -13,145 +13,322 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: #111;
       background: #fff;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER */
+
     header {
-      height: 70px;
+      height: 64px;
+      padding: 0 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 40px;
-      border-bottom: 1px solid #e5e5e5;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .left-nav,
+    .right-nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      width: 33%;
+    }
+
+    .right-nav {
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      cursor: pointer;
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -2px;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      text-align: center;
+      width: 34%;
     }
 
-    nav {
-      display: flex;
-      gap: 30px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #111;
-      font-size: 13px;
-      text-transform: uppercase;
-    }
-
-    .icons {
-      display: flex;
-      gap: 20px;
-      font-size: 13px;
-    }
+    /* HERO */
 
     .hero {
-      height: calc(100vh - 70px);
-      min-height: 600px;
-      background: #e9e9e9;
+      min-height: calc(100vh - 64px);
+      background: #e8e8e8;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 35px 28px;
       position: relative;
+      overflow: hidden;
     }
 
-    .hero-content h1 {
-      font-size: clamp(55px, 10vw, 150px);
-      letter-spacing: -8px;
-      font-weight: 800;
-    }
-
-    .hero-content p {
-      margin-top: 15px;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .hero-content button {
-      margin-top: 30px;
-      background: #111;
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 12px;
-      cursor: pointer;
-      text-transform: uppercase;
-    }
-
-    .collection {
-      padding: 100px 40px;
-    }
-
-    .collection-header {
+    .hero-top {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 30px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
     }
 
-    .collection h2 {
-      font-size: 28px;
-      font-weight: 500;
+    .hero-center {
+      margin: auto;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(80px, 17vw, 260px);
+      font-weight: 900;
+      letter-spacing: -0.09em;
+      line-height: .8;
+    }
+
+    .hero-subtitle {
+      margin-top: 28px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .shop-button {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 24px;
+      background: #111;
+      color: white;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: .2s;
+    }
+
+    .shop-button:hover {
+      background: #444;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    /* MARQUEE */
+
+    .marquee {
+      overflow: hidden;
+      border-bottom: 1px solid #ddd;
+      padding: 13px 0;
+      white-space: nowrap;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: move 18s linear infinite;
+    }
+
+    @keyframes move {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* COLLECTION */
+
+    .collection {
+      padding: 80px 28px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+
+    .view-all {
+      font-size: 11px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #111;
+      padding-bottom: 2px;
     }
 
     .products {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 12px;
     }
 
     .product-image {
-      background: #e5e5e5;
       aspect-ratio: 3 / 4;
+      background: #e9e9e9;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 10px;
       color: #777;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .product-info {
-      padding-top: 12px;
+      padding: 12px 0 25px;
       display: flex;
       justify-content: space-between;
-      font-size: 13px;
+      font-size: 11px;
+      text-transform: uppercase;
     }
+
+    /* STATEMENT */
+
+    .statement {
+      background: #111;
+      color: #fff;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      padding: 50px 28px;
+    }
+
+    .statement h2 {
+      font-size: clamp(45px, 9vw, 130px);
+      line-height: .9;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      max-width: 1100px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      padding: 100px 28px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 30px;
+    }
+
+    .about-label {
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .about-text {
+      font-size: clamp(24px, 4vw, 55px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      max-width: 850px;
+    }
+
+    /* FOOTER */
 
     footer {
-      border-top: 1px solid #e5e5e5;
-      padding: 40px;
+      border-top: 1px solid #ddd;
+      padding: 25px 28px;
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: 10px;
+      text-transform: uppercase;
     }
 
+    /* MOBILE */
+
     @media (max-width: 700px) {
+
       header {
-        padding: 0 20px;
+        padding: 0 16px;
+        height: 58px;
       }
 
-      nav {
+      .left-nav {
+        width: auto;
+      }
+
+      .right-nav {
+        width: auto;
+      }
+
+      .left-nav .nav-link:not(:first-child) {
         display: none;
       }
 
+      .right-nav .nav-link:first-child {
+        display: none;
+      }
+
+      .logo {
+        font-size: 27px;
+        width: auto;
+      }
+
+      .hero {
+        min-height: calc(100vh - 58px);
+        padding: 20px 16px;
+      }
+
+      .hero-title {
+        font-size: 24vw;
+      }
+
       .collection {
-        padding: 60px 20px;
+        padding: 60px 16px;
       }
 
       .products {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
       }
 
-      .hero-content h1 {
-        letter-spacing: -4px;
+      .products .product:last-child {
+        grid-column: span 2;
+      }
+
+      .statement {
+        padding: 40px 16px;
+        min-height: 45vh;
+      }
+
+      .about {
+        padding: 70px 16px;
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      footer {
+        padding: 20px 16px;
       }
     }
   </style>
@@ -160,67 +337,138 @@
 <body>
 
   <header>
-    <div class="logo">JUDGE</div>
 
-    <nav>
-      <a href="#">Shop</a>
-      <a href="#">New Arrivals</a>
-      <a href="#">About</a>
-    </nav>
-
-    <div class="icons">
-      <span>Search</span>
-      <span>Bag (0)</span>
+    <div class="left-nav">
+      <a href="#shop" class="nav-link">Shop</a>
+      <a href="#about" class="nav-link">About</a>
     </div>
+
+    <a href="#" class="logo">JUDGE</a>
+
+    <div class="right-nav">
+      <span class="nav-link">Search</span>
+      <span class="nav-link">Bag (0)</span>
+    </div>
+
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>JUDGE</h1>
-      <p>DENIM WITHOUT PERMISSION</p>
-      <button>Shop Collection</button>
-    </div>
-  </section>
 
-  <section class="collection">
+  <main>
 
-    <div class="collection-header">
-      <h2>New Arrivals</h2>
-      <span>View All</span>
-    </div>
+    <section class="hero">
 
-    <div class="products">
-
-      <div class="product">
-        <div class="product-image">PRODUCT IMAGE</div>
-        <div class="product-info">
-          <span>JUDGE Denim 001</span>
-          <span>₹2,499</span>
-        </div>
+      <div class="hero-top">
+        <span>JUDGE®</span>
+        <span>EST. 2026</span>
       </div>
 
-      <div class="product">
-        <div class="product-image">PRODUCT IMAGE</div>
-        <div class="product-info">
-          <span>JUDGE Denim 002</span>
-          <span>₹2,799</span>
-        </div>
+      <div class="hero-center">
+        <h1 class="hero-title">JUDGE</h1>
+
+        <p class="hero-subtitle">
+          Independent Denim / Pune, India
+        </p>
+
+        <a href="#shop" class="shop-button">
+          Shop Collection
+        </a>
       </div>
 
-      <div class="product">
-        <div class="product-image">PRODUCT IMAGE</div>
-        <div class="product-info">
-          <span>JUDGE Denim 003</span>
-          <span>₹2,999</span>
-        </div>
+      <div class="hero-bottom">
+        <span>Scroll to explore ↓</span>
+        <span>Drop 001</span>
       </div>
 
-    </div>
-  </section>
+    </section>
+
+
+    <section class="marquee">
+      <div class="marquee-text">
+        JUDGE — DENIM WITHOUT PERMISSION — DROP 001 —
+        JUDGE — DENIM WITHOUT PERMISSION — DROP 001 —
+        JUDGE — DENIM WITHOUT PERMISSION — DROP 001 —
+        JUDGE — DENIM WITHOUT PERMISSION — DROP 001 —
+      </div>
+    </section>
+
+
+    <section class="collection" id="shop">
+
+      <div class="section-head">
+        <h2 class="section-title">Drop 001 / New Arrivals</h2>
+        <span class="view-all">View All</span>
+      </div>
+
+      <div class="products">
+
+        <article class="product">
+          <div class="product-image">
+            PRODUCT 001
+          </div>
+
+          <div class="product-info">
+            <span>JUDGE / 001</span>
+            <span>₹2,499</span>
+          </div>
+        </article>
+
+
+        <article class="product">
+          <div class="product-image">
+            PRODUCT 002
+          </div>
+
+          <div class="product-info">
+            <span>JUDGE / 002</span>
+            <span>₹2,799</span>
+          </div>
+        </article>
+
+
+        <article class="product">
+          <div class="product-image">
+            PRODUCT 003
+          </div>
+
+          <div class="product-info">
+            <span>JUDGE / 003</span>
+            <span>₹2,999</span>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section class="statement">
+      <h2>
+        DENIM<br>
+        WITHOUT<br>
+        PERMISSION.
+      </h2>
+    </section>
+
+
+    <section class="about" id="about">
+
+      <div class="about-label">
+        About JUDGE
+      </div>
+
+      <div class="about-text">
+        JUDGE is an independent clothing project focused on denim, experimentation and pieces made to stand out.
+      </div>
+
+    </section>
+
+  </main>
+
 
   <footer>
     <span>© 2026 JUDGE</span>
-    <span>India</span>
+    <span>INDIA</span>
+    <span>ALL RIGHTS RESERVED</span>
   </footer>
 
 </body>
