@@ -531,16 +531,14 @@ function closeBag() {
   document.getElementById("bag").classList.remove("open");
 }
  document.addEventListener("click", function(event) {
-  const bagPanel = document.getElementById("bag");
-  const bagButton = document.querySelector(".bag-count");
+    const bag = document.getElementById("bag");
 
-  if (
-    bagPanel.classList.contains("open") &&
-    !bagPanel.contains(event.target) &&
-    !bagButton.contains(event.target)
-  ) {
-    closeBag();
-  }
+    if (
+        bag.classList.contains("open") &&
+        !bag.contains(event.target)
+    ) {
+        closeBag();
+    }
 });
 
 </script>
