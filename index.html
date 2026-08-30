@@ -530,7 +530,17 @@ function openBag() {
 function closeBag() {
   document.getElementById("bag").classList.remove("open");
 }
+document.addEventListener("click", function(event) {
+  const bag = document.getElementById("bag");
 
+  if (
+    bag.classList.contains("open") &&
+    !bag.contains(event.target) &&
+    !event.target.closest("[onclick='openBag()']")
+  ) {
+    closeBag();
+  }
+});
 </script>
 
 </body>
