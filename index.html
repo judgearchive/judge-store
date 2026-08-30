@@ -7,6 +7,7 @@
 <title>JUDGE — Official Store</title>
 
 <style>
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -176,16 +177,16 @@ a {
 .bag-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.15);
-  z-index: 9;
+  background: rgba(0, 0, 0, 0);
   opacity: 0;
-  pointer-events: none;
+  visibility: hidden;
   transition: opacity 0.3s ease;
+  z-index: 9;
 }
 
 .bag-overlay.open {
   opacity: 1;
-  pointer-events: auto;
+  visibility: visible;
 }
 
 /* BAG */
@@ -246,6 +247,8 @@ a {
   cursor: pointer;
 }
 
+/* MOBILE */
+
 @media (max-width: 700px) {
 
   header {
@@ -271,13 +274,16 @@ a {
   .logo {
     font-size: 27px;
   }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
+
   <div class="nav-left">
     <a>SHOP</a>
     <a>ABOUT</a>
@@ -289,6 +295,7 @@ a {
     <a>SEARCH</a>
     <a onclick="openBag()">BAG (<span id="bag-count">0</span>)</a>
   </div>
+
 </header>
 
 
@@ -306,35 +313,47 @@ a {
 <div class="products">
 
   <article class="product" onclick="openProduct(0)">
+
     <div class="product-image">
       <img src="judge-001-front.jpeg">
     </div>
+
     <div class="product-info">
       <span>₹2,499 &nbsp; JUDGE / 001</span>
     </div>
+
   </article>
 
+
   <article class="product" onclick="openProduct(1)">
+
     <div class="product-image">
       <img src="judge-002-front.jpeg">
     </div>
+
     <div class="product-info">
       <span>₹2,799 &nbsp; JUDGE / 002</span>
     </div>
+
   </article>
 
+
   <article class="product" onclick="openProduct(2)">
+
     <div class="product-image">
       <img src="judge-003-front.jpeg">
     </div>
+
     <div class="product-info">
       <span>₹2,799 &nbsp; JUDGE / 003</span>
     </div>
+
   </article>
 
 </div>
 
 </section>
+
 </div>
 
 
@@ -342,7 +361,9 @@ a {
 
 <div id="product-page" class="product-page">
 
-<div class="back" onclick="goBack()">← BACK TO SHOP</div>
+<div class="back" onclick="goBack()">
+  ← BACK TO SHOP
+</div>
 
 <div class="product-detail">
 
@@ -356,16 +377,22 @@ a {
 
     <div class="detail-price" id="detail-price"></div>
 
-    <div style="font-size:11px;">SELECT SIZE</div>
+    <div style="font-size:11px;">
+      SELECT SIZE
+    </div>
 
     <div class="sizes">
+
       <div class="size" onclick="selectSize(this)">S</div>
       <div class="size" onclick="selectSize(this)">M</div>
       <div class="size" onclick="selectSize(this)">L</div>
       <div class="size" onclick="selectSize(this)">XL</div>
+
     </div>
 
-    <button class="add-btn" onclick="addToBag()">ADD TO BAG</button>
+    <button class="add-btn" onclick="addToBag()">
+      ADD TO BAG
+    </button>
 
     <div class="description">
       Wide-leg denim.<br>
@@ -376,6 +403,7 @@ a {
   </div>
 
 </div>
+
 </div>
 
 
@@ -388,14 +416,21 @@ a {
 
 <div id="bag" class="bag-panel">
 
-<div class="bag-header">
-  <strong>BAG</strong>
-  <span style="cursor:pointer" onclick="closeBag()">×</span>
-</div>
+  <div class="bag-header">
 
-<div id="bag-items"></div>
+    <strong>BAG</strong>
 
-<button class="checkout">CHECKOUT</button>
+    <span style="cursor:pointer" onclick="closeBag()">
+      ×
+    </span>
+
+  </div>
+
+  <div id="bag-items"></div>
+
+  <button class="checkout">
+    CHECKOUT
+  </button>
 
 </div>
 
@@ -415,3 +450,193 @@ const products = [
     price: "₹2,799",
     image: "judge-002-front.jpeg"
   },
+
+  {
+    name: "JUDGE / 003",
+    price: "₹2,799",
+    image: "judge-003-front.jpeg"
+  }
+
+];
+
+
+let currentProduct = null;
+let selectedSize = null;
+let bag = [];
+
+
+/* OPEN PRODUCT */
+
+function openProduct(index) {
+
+  currentProduct = products[index];
+
+  document.getElementById("shop-page").style.display = "none";
+
+  document.getElementById("product-page").style.display = "block";
+
+  document.getElementById("detail-img").src =
+    currentProduct.image;
+
+  document.getElementById("detail-name").innerText =
+    currentProduct.name;
+
+  document.getElementById("detail-price").innerText =
+    currentProduct.price;
+
+  selectedSize = null;
+
+  document.querySelectorAll(".size").forEach(function(size) {
+    size.classList.remove("selected");
+  });
+
+  window.scrollTo(0, 0);
+
+}
+
+
+/* BACK TO SHOP */
+
+function goBack() {
+
+  document.getElementById("product-page").style.display = "none";
+
+  document.getElementById("shop-page").style.display = "block";
+
+  closeBag();
+
+  window.scrollTo(0, 0);
+
+}
+
+
+/* SELECT SIZE */
+
+function selectSize(element) {
+
+  document.querySelectorAll(".size").forEach(function(size) {
+    size.classList.remove("selected");
+  });
+
+  element.classList.add("selected");
+
+  selectedSize = element.innerText;
+
+}
+
+
+/* ADD TO BAG */
+
+function addToBag() {
+
+  if (!selectedSize) {
+
+    alert("SELECT A SIZE");
+
+    return;
+
+  }
+
+  bag.push({
+    ...currentProduct,
+    size: selectedSize
+  });
+
+  updateBag();
+
+  openBag();
+
+}
+
+
+/* UPDATE BAG */
+
+function updateBag() {
+
+  document.getElementById("bag-count").innerText = bag.length;
+
+  const bagItems =
+    document.getElementById("bag-items");
+
+  bagItems.innerHTML = "";
+
+  bag.forEach(function(item, index) {
+
+    bagItems.innerHTML += `
+
+      <div class="bag-item">
+
+        <img src="${item.image}">
+
+        <div>
+
+          <div style="font-size:12px">
+            ${item.name}
+          </div>
+
+          <div style="font-size:11px; margin-top:5px">
+            ${item.price}
+          </div>
+
+          <div style="font-size:11px; margin-top:5px">
+            SIZE ${item.size}
+          </div>
+
+          <span
+            class="remove"
+            onclick="removeItem(${index})"
+          >
+            REMOVE
+          </span>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+
+/* REMOVE ITEM */
+
+function removeItem(index) {
+
+  bag.splice(index, 1);
+
+  updateBag();
+
+}
+
+
+/* OPEN BAG */
+
+function openBag() {
+
+  document.getElementById("bag")
+    .classList.add("open");
+
+  document.getElementById("bag-overlay")
+    .classList.add("open");
+
+}
+
+
+/* CLOSE BAG */
+
+function closeBag() {
+
+  document.getElementById("bag")
+    .classList.remove("open");
+
+  document.getElementById("bag-overlay")
+    .classList.remove("open");
+
+}
+
+</script>
+
+</body>
+</html>
