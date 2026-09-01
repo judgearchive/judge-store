@@ -1296,5 +1296,46 @@
           });
       })();
     </script>
+    <script>
+      // Auto-fills City and State when a valid 6-digit PIN is typed on
+      // the checkout page. Uses event delegation on document so it works
+      // even though the checkout form doesn't exist yet on initial load.
+      (function () {
+        var lastLookup = '';
+        document.addEventListener('input', function (e) {
+          var el = e.target;
+          if (!el || el.name !== 'pin') return;
+
+          var pin = el.value.trim();
+          if (!/^\d{6}$/.test(pin) || pin === lastLookup) return;
+          lastLookup = pin;
+
+          fetch('https://api.postalpincode.in/pincode/' + pin)
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              if (!data || !data[0] || data[0].Status !== 'Success') return;
+              var po = data[0].PostOffice && data[0].PostOffice[0];
+              if (!po) return;
+
+              var form = el.form;
+              if (!form) return;
+              var cityField = form.querySelector('[name="city"]');
+              var stateField = form.querySelector('[name="state"]');
+
+              // Only fill if empty — never overwrite something the
+              // customer already typed themselves.
+              if (cityField && !cityField.value.trim()) {
+                cityField.value = po.District || po.Block || '';
+              }
+              if (stateField && !stateField.value.trim()) {
+                stateField.value = po.State || '';
+              }
+            })
+            .catch(function () {
+              // Silent fail — customer can still type city/state manually.
+            });
+        });
+      })();
+    </script>
     </body>
   </html>
