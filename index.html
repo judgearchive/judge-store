@@ -10,6 +10,8 @@
       <title>
         JUDGE — Drop 001
       </title>
+      <script src="https://sdk.cashfree.com/js/v3/cashfree.js">
+      </script>
       <script defer="defer" src="static/js/main.baeb19a1.js">
       </script>
       <link href="static/css/main.dba32cb8.css" rel="stylesheet" />
@@ -1254,5 +1256,45 @@
         <section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false">
         </section>
       </div>
+    <script>
+      // Runs when Cashfree redirects the customer back after payment.
+      // Independent of the React app so it works no matter which route
+      // Cashfree sends them to.
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var orderId = params.get('order_id');
+        if (!orderId) return;
+
+        fetch(window.JUDGE_CASHFREE_CONFIG.backendUrl + '/api/orders/' + orderId)
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            var banner = document.createElement('div');
+            banner.style.cssText =
+              'position:fixed;top:0;left:0;right:0;z-index:999999;padding:14px 20px;' +
+              'font-family:sans-serif;font-size:14px;text-align:center;color:#fff;';
+
+            if (data.order_status === 'PAID') {
+              banner.style.background = '#1a7f37';
+              banner.textContent = 'Payment successful — order ' + orderId + ' confirmed.';
+              window.localStorage.removeItem('judge-cart');
+              window.localStorage.removeItem('judge-pending-order');
+            } else {
+              banner.style.background = '#b42318';
+              banner.textContent =
+                'Payment was not completed for order ' + orderId + '. Please try again from your bag.';
+            }
+
+            document.body.prepend(banner);
+            setTimeout(function () { banner.remove(); }, 8000);
+
+            // Clean the URL so a refresh doesn't re-trigger this.
+            window.history.replaceState({}, '', window.location.pathname);
+          })
+          .catch(function () {
+            // Network/backend issue — don't claim success or failure, just
+            // let the customer know to check their email / contact support.
+          });
+      })();
+    </script>
     </body>
   </html>

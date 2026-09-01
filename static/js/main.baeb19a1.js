@@ -1,3 +1,10 @@
+window.JUDGE_CASHFREE_CONFIG = {
+  // Set this to your deployed backend URL (see judge-cashfree-backend), e.g.
+  // "https://judge-backend.onrender.com"
+  backendUrl: "https://REPLACE-WITH-YOUR-BACKEND-URL.example.com",
+  // "sandbox" while testing, "production" once you're taking real payments
+  mode: "sandbox"
+};
 (() => {
   'use strict';
   var e = {
@@ -13052,8 +13059,49 @@
               }),
               (0, Rn.jsxs)('form', {
                 className: 'delivery-form',
-                onSubmit: e => {
-                  e.preventDefault(), e.currentTarget.reportValidity() && l('Payment integration coming soon');
+                onSubmit: async e => {
+                  e.preventDefault();
+                  if (!e.currentTarget.reportValidity()) return;
+                  const jForm = e.currentTarget;
+                  const jFd = new FormData(jForm);
+                  const jBtn = jForm.querySelector('[data-testid="continue-to-payment-button"]');
+                  l('');
+                  if (jBtn) jBtn.disabled = true;
+                  try {
+                    const jRes = await fetch(window.JUDGE_CASHFREE_CONFIG.backendUrl + '/api/orders', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        cartItems: t.map(x => ({ productId: x.product.id, quantity: x.quantity, size: x.size })),
+                        customer: {
+                          name: jFd.get('fullName'),
+                          email: jFd.get('email'),
+                          phone: jFd.get('phone'),
+                          address: jFd.get('address'),
+                          city: jFd.get('city'),
+                          state: jFd.get('state'),
+                          pin: jFd.get('pin')
+                        }
+                      })
+                    });
+                    const jData = await jRes.json();
+                    if (!jRes.ok) {
+                      l(jData.error || 'Something went wrong. Please try again.');
+                      if (jBtn) jBtn.disabled = false;
+                      return;
+                    }
+                    if (!window.Cashfree) {
+                      l('Payment system failed to load. Please refresh and try again.');
+                      if (jBtn) jBtn.disabled = false;
+                      return;
+                    }
+                    window.localStorage.setItem('judge-pending-order', jData.order_id);
+                    const jCf = window.Cashfree({ mode: window.JUDGE_CASHFREE_CONFIG.mode });
+                    jCf.checkout({ paymentSessionId: jData.payment_session_id, redirectTarget: '_self' });
+                  } catch (jErr) {
+                    l('Network error. Please check your connection and try again.');
+                    if (jBtn) jBtn.disabled = false;
+                  }
                 },
                 children: [
                   (0, Rn.jsxs)('div', {
